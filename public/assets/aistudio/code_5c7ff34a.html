@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Pedido #1038 - Detalle de Pedido Histórico</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "border-light": "#E9E2DC",
+            "on-primary-fixed-variant": "#7d2d00",
+            "on-secondary-container": "#686360",
+            "brand-dark-hover": "#FF8A26",
+            "surface-container-high": "#f3e6dd",
+            "inverse-surface": "#362f29",
+            "on-background": "#211a15",
+            "bg-light": "#FFFDFB",
+            "inverse-primary": "#ffb596",
+            "brand-hover": "#E85A00",
+            "on-primary-container": "#551d00",
+            "success-dark": "#2BBE6C",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#a33e00",
+            "brand-dark-pressed": "#D95E00",
+            "on-secondary-fixed-variant": "#4a4643",
+            "primary-container": "#ff6500",
+            "on-secondary": "#ffffff",
+            "surface-light": "#FFFFFF",
+            "tertiary": "#615e59",
+            "primary-fixed": "#ffdbcd",
+            "brand-dark": "#FF7600",
+            "error-dark": "#F04438",
+            "text-secondary-dark": "#B9B0A8",
+            "surface-alt-dark": "#28231F",
+            "on-tertiary-fixed": "#1d1b18",
+            "success-light": "#22A35A",
+            "primary-fixed-dim": "#ffb596",
+            "on-surface": "#211a15",
+            "on-secondary-fixed": "#1e1b18",
+            "tertiary-fixed": "#e7e2dc",
+            "warning-light": "#D97706",
+            "secondary-fixed": "#e9e1dc",
+            "secondary-container": "#e9e1dc",
+            "on-tertiary-fixed-variant": "#494642",
+            "brand-dark-soft": "#3A2112",
+            "bg-dark": "#121110",
+            "surface-dark": "#191817",
+            "text-secondary-light": "#6B625B",
+            "error": "#ba1a1a",
+            "brand-soft": "#FFF1E8",
+            "surface-soft-dark": "#211E1B",
+            "inverse-on-surface": "#fceee5",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ccc5c1",
+            "surface-container-highest": "#ede0d7",
+            "surface-tint": "#a33e00",
+            "brand-pressed": "#CC4F00",
+            "text-dark": "#FAF8F5",
+            "on-error-container": "#93000a",
+            "surface-container": "#f9ebe2",
+            "surface-variant": "#ede0d7",
+            "tertiary-fixed-dim": "#cbc6c0",
+            "info-light": "#3B82F6",
+            "surface-soft-light": "#FFF7F2",
+            "warning-dark": "#F59E0B",
+            "on-error": "#ffffff",
+            "text-light": "#111111",
+            "surface": "#fff8f5",
+            "surface-container-low": "#fef1e8",
+            "info-dark": "#60A5FA",
+            "secondary": "#625d5a",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#5a4136",
+            "background": "#fff8f5",
+            "outline": "#8e7164",
+            "tertiary-container": "#9a9691",
+            "error-light": "#D92D20",
+            "on-tertiary-container": "#312f2b",
+            "surface-alt-light": "#F6F0EA",
+            "border-dark": "#3A342F",
+            "on-primary": "#ffffff",
+            "surface-dim": "#e4d8cf",
+            "surface-bright": "#fff8f5",
+            "outline-variant": "#e3bfb1",
+            "on-primary-fixed": "#360f00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-2xl": "2.5rem",
+            "space-3xl": "3rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "caption": ["Plus Jakarta Sans"],
+            "title-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "title-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-xl": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Baseline touch and scroll setup */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .icon-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-light text-text-light min-h-screen flex flex-col justify-start items-center selection:bg-brand-soft selection:text-primary-container">
+<!-- Mobile Viewport Shell (Max 390px, responsive centering) -->
+<main class="w-full max-w-[390px] min-h-screen bg-bg-light pb-36 relative flex flex-col shadow-sm">
+<!-- Top Bar Navigation (Sub-page linear view: back action, suppress Global BottomNav) -->
+<header class="sticky top-0 z-40 bg-surface-light/95 backdrop-blur-md px-margin-mobile py-3.5 flex items-center justify-between border-b border-border-light shadow-sm">
+<button aria-label="Volver al historial" class="min-w-[44px] min-h-[44px] -ml-2 rounded-full flex items-center justify-center text-text-light hover:bg-surface-alt-light active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-caption text-caption text-text-secondary-light tracking-wider">HISTORIAL DE COMPRA</span>
+<h1 class="font-headline-md text-headline-md text-text-light tracking-tight">Pedido #1038</h1>
+</div>
+<div class="flex items-center gap-1 -mr-2">
+<button class="min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-secondary-light hover:text-text-light hover:bg-surface-alt-light active:scale-95 transition-all" title="Descargar comprobante" type="button">
+<span class="material-symbols-outlined text-[22px]">receipt</span>
+</button>
+<button class="min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-text-secondary-light hover:text-text-light hover:bg-surface-alt-light active:scale-95 transition-all" title="Compartir pedido" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="px-margin-mobile pt-4 space-y-4">
+<!-- Primary Status Card -->
+<section class="bg-surface-light border border-border-light rounded-xl p-4 shadow-sm relative overflow-hidden">
+<!-- Visual Accent Pill -->
+<div class="flex items-center justify-between mb-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAF7EE] text-success-light font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] icon-fill">check_circle</span>
+            Pedido Entregado
+          </span>
+<div class="flex items-center gap-1 text-text-secondary-light font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>28 min total</span>
+</div>
+</div>
+<h2 class="font-title-sm text-title-sm text-text-light">Ayer, 22 de Septiembre a las 21:42 hs</h2>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-success-light">verified</span>
+          Entregado a tiempo por Carlos Gómez
+        </p>
+</section>
+<!-- Merchant Profile Card -->
+<section class="bg-surface-light border border-border-light rounded-xl p-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img alt="Pizzería Napolitana Gourmet" class="w-14 h-14 rounded-xl object-cover border border-border-light flex-shrink-0" data-alt="Modern close-up appetizing gourmet artisanal pizza with fresh basil leaves and melted creamy burrata cheese on a rustic wooden board, warm orange ambient lighting with light cream table accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaJD9kffEjK7Q1xvTYjTyrClZyemGu05kteeRxg0SRunovQT-k9lVp1AnIPQnbA5CUAkaDkNJDqTSGwhNwNRJssgPI87sOFtcjmZFWTmiGFURrh_tS6Sq7KOR8A_4tu8hm5Wj3W3xXOyGP3BLJ2LPeQyvp4xbCGxJ_XnONrjYSBvVK9VyfdyDVjkV_1UW1DVcL-vgLfdEoDRHgz3yIh32Tqm-aBo2wVbDSlD5wpuF-fKiOjlwJmygefA"/>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-headline-md text-text-light leading-tight">Pizzería Napolitana Gourmet</h3>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-0.5">Av. Santa Fe 2100, Palermo</p>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-alt-light text-text-secondary-light font-caption text-caption">
+<span class="material-symbols-outlined text-[13px] text-success-light">verified_user</span>
+                  Comercio verificado
+                </span>
+<span class="font-caption text-caption text-text-secondary-light">• Cocina Italiana</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-border-light flex items-center justify-between text-body-sm font-body-sm">
+<a class="flex items-center gap-1.5 text-primary-container font-label-md text-label-md hover:underline py-1" href="tel:+541147789000">
+<span class="material-symbols-outlined text-[18px]">call</span>
+            Llamar al local
+          </a>
+<button class="text-text-secondary-light hover:text-text-light font-label-md text-label-md flex items-center gap-1 py-1" type="button">
+<span>Ver menú</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Review & Feedback Interactive Section (SRS) -->
+<section class="bg-gradient-to-b from-surface-soft-light to-surface-light border border-border-light rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px] icon-fill">rate_review</span>
+<h3 class="font-title-sm text-title-sm text-text-light">Tu opinión sobre este pedido</h3>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EAF7EE] text-success-light font-caption text-caption">
+<span class="material-symbols-outlined text-[12px] icon-fill">done</span>
+            Enviada
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light mb-3">
+          Calificaste este pedido con <strong class="text-text-light">5 de 5 estrellas</strong>
+</p>
+<!-- Star Rating Display -->
+<div class="flex items-center gap-2 bg-surface-light border border-border-light p-2.5 rounded-xl justify-center mb-3">
+<button aria-label="1 estrella" class="text-primary-container p-1 active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px] icon-fill">star</span>
+</button>
+<button aria-label="2 estrellas" class="text-primary-container p-1 active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px] icon-fill">star</span>
+</button>
+<button aria-label="3 estrellas" class="text-primary-container p-1 active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px] icon-fill">star</span>
+</button>
+<button aria-label="4 estrellas" class="text-primary-container p-1 active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px] icon-fill">star</span>
+</button>
+<button aria-label="5 estrellas" class="text-primary-container p-1 active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px] icon-fill">star</span>
+</button>
+<span class="ml-2 font-headline-md text-headline-md text-primary-container">5.0</span>
+</div>
+<!-- Rating Feedback Chips -->
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-soft text-primary-container font-label-sm text-label-sm border border-primary-container/30">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+            Comida caliente
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-soft text-primary-container font-label-sm text-label-sm border border-primary-container/30">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+            Entrega rápida
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-soft text-primary-container font-label-sm text-label-sm border border-primary-container/30">
+<span class="material-symbols-outlined text-[14px]">sentiment_very_satisfied</span>
+            Amable
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-soft text-primary-container font-label-sm text-label-sm border border-primary-container/30">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+            Buen embalaje
+          </span>
+</div>
+<button class="w-full py-2 bg-surface-light border border-border-light rounded-lg text-text-secondary-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-colors" type="button">
+          Editar comentario o propina
+        </button>
+</section>
+<!-- Items Breakdown -->
+<section class="bg-surface-light border border-border-light rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-border-light">
+<h3 class="font-title-sm text-title-sm text-text-light flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-text-secondary-light">restaurant_menu</span>
+            Detalle de productos
+          </h3>
+<span class="font-caption text-caption text-text-secondary-light uppercase tracking-wider">3 artículos</span>
+</div>
+<div class="divide-y divide-border-light">
+<!-- Item 1 -->
+<article class="py-3 flex items-start justify-between gap-3">
+<div class="flex gap-2.5 items-start">
+<span class="w-6 h-6 rounded bg-surface-alt-light text-primary-container font-label-md text-label-md flex items-center justify-center flex-shrink-0 mt-0.5">
+                1
+              </span>
+<div>
+<h4 class="font-label-lg text-label-lg text-text-light">Pizza Margherita Especial</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-0.5">Mediana • Masa madre • Extra mozzarella</p>
+<span class="inline-block mt-1 font-caption text-caption text-success-light bg-[#EAF7EE] px-1.5 py-0.5 rounded">Nota: Sin orégano</span>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-text-light whitespace-nowrap">$12.500</span>
+</article>
+<!-- Item 2 -->
+<article class="py-3 flex items-start justify-between gap-3">
+<div class="flex gap-2.5 items-start">
+<span class="w-6 h-6 rounded bg-surface-alt-light text-primary-container font-label-md text-label-md flex items-center justify-center flex-shrink-0 mt-0.5">
+                1
+              </span>
+<div>
+<h4 class="font-label-lg text-label-lg text-text-light">Cerveza Moretti</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-0.5">Porrón 330ml • Fría</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-text-light whitespace-nowrap">$3.200</span>
+</article>
+<!-- Item 3 -->
+<article class="py-3 flex items-start justify-between gap-3">
+<div class="flex gap-2.5 items-start">
+<span class="w-6 h-6 rounded bg-surface-alt-light text-primary-container font-label-md text-label-md flex items-center justify-center flex-shrink-0 mt-0.5">
+                1
+              </span>
+<div>
+<h4 class="font-label-lg text-label-lg text-text-light">Volcán de Chocolate Tibio</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-0.5">Postre individual artesanal</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-text-light whitespace-nowrap">$4.200</span>
+</article>
+</div>
+</section>
+<!-- Fiscal & Financial Accounting Summary -->
+<section class="bg-surface-light border border-border-light rounded-xl p-4 shadow-sm">
+<h3 class="font-title-sm text-title-sm text-text-light flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary-light">payments</span>
+          Resumen de pago
+        </h3>
+<div class="space-y-2 font-body-md text-body-md">
+<div class="flex justify-between text-text-secondary-light">
+<span>Subtotal productos</span>
+<span class="text-text-light font-medium">$19.900</span>
+</div>
+<div class="flex justify-between text-text-secondary-light">
+<span class="flex items-center gap-1">
+              Tarifa de entrega
+              <span class="material-symbols-outlined text-[15px] text-text-secondary-light">info</span>
+</span>
+<span class="text-text-light font-medium">$1.450</span>
+</div>
+<div class="flex justify-between text-text-secondary-light">
+<span class="flex items-center gap-1">
+              Propina voluntaria cadete (100% Carlos)
+              <span class="material-symbols-outlined text-[15px] text-primary-container">favorite</span>
+</span>
+<span class="text-text-light font-medium">$1.000</span>
+</div>
+<div class="flex justify-between text-success-light">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sell</span>
+              Cupón PIZZA2000
+            </span>
+<span class="font-semibold">-$2.000</span>
+</div>
+<div class="pt-2 border-t border-border-light flex justify-between items-baseline">
+<div>
+<span class="font-title-sm text-title-sm text-text-light">Total abonado</span>
+<p class="font-caption text-caption text-text-secondary-light">Impuestos y tasas de servicio incluidos</p>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-text-light tracking-tight">$20.350</span>
+</div>
+</div>
+<!-- Payment Method Box -->
+<div class="mt-3 pt-3 border-t border-border-light flex items-center justify-between bg-surface-alt-light/60 p-2.5 rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-5 bg-[#1A1F71] text-white rounded font-caption text-[9px] flex items-center justify-center font-extrabold tracking-widest">
+              VISA
+            </span>
+<div>
+<p class="font-label-md text-label-md text-text-light">Visa terminada en •••• 4821</p>
+<p class="font-caption text-caption text-text-secondary-light">1 pago • Aprobado (Ref: #849201)</p>
+</div>
+</div>
+<button class="text-text-secondary-light hover:text-text-light" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</section>
+<!-- Delivery Logistics & Courier Section -->
+<section class="bg-surface-light border border-border-light rounded-xl p-4 shadow-sm space-y-4">
+<div>
+<h3 class="font-title-sm text-title-sm text-text-light flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[20px] text-text-secondary-light">location_on</span>
+            Punto de entrega
+          </h3>
+<p class="font-label-lg text-label-lg text-text-light">Casa - Av. Corrientes 1234</p>
+<p class="font-body-sm text-body-sm text-text-secondary-light">Piso 4 Departamento B, CABA</p>
+<div class="mt-2 flex items-center gap-1.5 p-2 bg-surface-alt-light rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-text-secondary-light">comment</span>
+<span class="font-caption text-caption text-text-secondary-light">Instrucción: "Tocar timbre 4B"</span>
+</div>
+</div>
+<div class="pt-3 border-t border-border-light">
+<h4 class="font-label-sm text-label-sm text-text-secondary-light uppercase tracking-wider mb-2">Repartidor asignado</h4>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Carlos Gómez repartidor" class="w-12 h-12 rounded-full object-cover border-2 border-border-light" data-alt="Close up warm lifestyle portrait of a friendly smiling male delivery courier with helmet and black delivery jacket standing outdoors against a warm urban Buenos Aires background with soft ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf7yMcI7lxZ_bJ4uc-5n9xel2DXjVTBoDr-vpWUN8qja69UPTiz3AUwJYMkKSPQfrvakQ1qdOQ8mgMxjbCd83Zj2t4oglRHagtnTcd5GiCx0P_D5BcFJ3PyiJ68z6EpSFjQP7e6eGmz4-DdwdiU3-MbjPY6DAyghTL1XK7LqQ8phrRPoAztsd5L8O_1Qi3PnbAZ9eg5TQa4HMayJXd0bijgTNme8gS3VC5RQpIHpcL324LxJZxYxo8eg"/>
+<div>
+<p class="font-title-sm text-title-sm text-text-light">Carlos Gómez</p>
+<p class="font-body-sm text-body-sm text-text-secondary-light">Moto Honda Wave • Repartidor Diamante</p>
+<div class="flex items-center gap-1 text-primary-container font-label-sm text-label-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px] icon-fill">star</span>
+<span>4.9 (1.420 pedidos)</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="px-2 py-1 rounded bg-[#EAF7EE] text-success-light font-caption text-caption font-bold">
+                +$1.000 Propina
+              </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Reassurance and FAQ Helper -->
+<section class="py-2 flex items-center justify-between px-2 text-text-secondary-light font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+          Ticket fiscal oficial emitido
+        </span>
+<button class="text-primary-container font-label-md text-label-md hover:underline" type="button">
+          Ver factura electrónica
+        </button>
+</section>
+</div>
+<!-- Fixed Bottom Sticky Bar with Primary CTA (Rule of Single Focus) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-light/95 backdrop-blur-md border-t border-border-light p-margin-mobile shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+<div class="max-w-[390px] mx-auto space-y-2">
+<!-- Single Orange Focus CTA -->
+<button class="w-full h-12 bg-primary-container hover:bg-brand-hover active:bg-brand-pressed text-surface-light rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">replay</span>
+          Volver a pedir (Repetir carrito)
+        </button>
+<!-- Secondary Support Action -->
+<button class="w-full h-10 bg-transparent text-text-secondary-light hover:text-text-light font-label-md text-label-md flex items-center justify-center gap-1.5 rounded-lg active:scale-[0.99] transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+          ¿Necesitas ayuda con este pedido? Soporte 24/7
+        </button>
+</div>
+</div>
+</main>
+<script>
+    // Lightweight atmospheric and interactive logic for stars
+    document.querySelectorAll('[aria-label$="estrella"], [aria-label$="estrellas"]').forEach((star, idx) => {
+      star.addEventListener('click', () => {
+        const stars = star.parentElement.querySelectorAll('.material-symbols-outlined');
+        stars.forEach((icon, i) => {
+          if (i <= idx) {
+            icon.classList.add('icon-fill');
+            icon.parentElement.classList.add('text-primary-container');
+            icon.parentElement.classList.remove('text-border-light');
+          } else {
+            icon.classList.remove('icon-fill');
+            icon.parentElement.classList.remove('text-primary-container');
+            icon.parentElement.classList.add('text-text-secondary-light');
+          }
+        });
+      });
+    });
+  </script>
+</body></html>

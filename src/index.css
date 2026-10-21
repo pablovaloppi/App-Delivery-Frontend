@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand: #FF6500;
+    --brand-hover: #E85A00;
+    --brand-pressed: #CC4F00;
+    --brand-soft: #FFF1E8;
+    --bg: #FFFDFB;
+    --surface: #FFFFFF;
+    --surface-soft: #FFF7F2;
+    --surface-alt: #F6F0EA;
+    --text: #111111;
+    --text-secondary: #6B625B;
+    --border: #E9E2DC;
+    --success: #22A35A;
+    --warning: #D97706;
+    --error: #D92D20;
+    --info: #3B82F6;
+  }
+
+  .dark {
+    --brand: #FF7600;
+    --brand-hover: #FF8A26;
+    --brand-pressed: #D95E00;
+    --brand-soft: #3A2112;
+    --bg: #121110;
+    --surface: #191817;
+    --surface-soft: #211E1B;
+    --surface-alt: #28231F;
+    --text: #FAF8F5;
+    --text-secondary: #B9B0A8;
+    --border: #3A342F;
+    --success: #2BBE6C;
+    --warning: #F59E0B;
+    --error: #F04438;
+    --info: #60A5FA;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100dvh;
+  }
+}
+
+/* Material Symbols Icon helper */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill-icon,
+.icon-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Utility classes for tokens */
+.bg-app { background-color: var(--bg); }
+.bg-surface-app { background-color: var(--surface); }
+.bg-surface-soft-app { background-color: var(--surface-soft); }
+.bg-surface-alt-app { background-color: var(--surface-alt); }
+.bg-brand-app { background-color: var(--brand); }
+.bg-brand-soft-app { background-color: var(--brand-soft); }
+.text-app { color: var(--text); }
+.text-secondary-app { color: var(--text-secondary); }
+.text-brand-app { color: var(--brand); }
+.border-app { border-color: var(--border); }
+.border-brand-app { border-color: var(--brand); }
+
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

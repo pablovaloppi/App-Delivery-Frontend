@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FoodieLocal - Marketplace de Delivery</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "brand-dark-hover": "#FF8A26",
+            "tertiary-fixed-dim": "#cbc6c0",
+            "outline-variant": "#e3bfb1",
+            "error-dark": "#F04438",
+            "primary": "#a33e00",
+            "surface-container-low": "#fef1e8",
+            "surface-light": "#FFFFFF",
+            "surface-container-highest": "#ede0d7",
+            "warning-dark": "#F59E0B",
+            "secondary": "#625d5a",
+            "info-light": "#3B82F6",
+            "surface-dim": "#e4d8cf",
+            "on-surface-variant": "#5a4136",
+            "tertiary": "#615e59",
+            "on-error": "#ffffff",
+            "surface-soft-light": "#FFF7F2",
+            "border-light": "#E9E2DC",
+            "on-primary-fixed-variant": "#7d2d00",
+            "bg-dark": "#121110",
+            "primary-fixed-dim": "#ffb596",
+            "on-secondary-container": "#686360",
+            "error-light": "#D92D20",
+            "text-secondary-dark": "#B9B0A8",
+            "text-secondary-light": "#6B625B",
+            "surface-alt-light": "#F6F0EA",
+            "primary-container": "#ff6500",
+            "tertiary-container": "#9a9691",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "background": "#fff8f5",
+            "text-dark": "#FAF8F5",
+            "on-secondary-fixed-variant": "#4a4643",
+            "surface": "#fff8f5",
+            "brand-dark-pressed": "#D95E00",
+            "surface-soft-dark": "#211E1B",
+            "brand-dark-soft": "#3A2112",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed-variant": "#494642",
+            "outline": "#8e7164",
+            "inverse-primary": "#ffb596",
+            "brand-pressed": "#CC4F00",
+            "surface-container-high": "#f3e6dd",
+            "brand-dark": "#FF7600",
+            "brand-soft": "#FFF1E8",
+            "success-light": "#22A35A",
+            "inverse-surface": "#362f29",
+            "on-surface": "#211a15",
+            "surface-tint": "#a33e00",
+            "secondary-fixed": "#e9e1dc",
+            "on-tertiary-fixed": "#1d1b18",
+            "secondary-fixed-dim": "#ccc5c1",
+            "tertiary-fixed": "#e7e2dc",
+            "on-background": "#211a15",
+            "surface-container-lowest": "#ffffff",
+            "success-dark": "#2BBE6C",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#e9e1dc",
+            "surface-alt-dark": "#28231F",
+            "brand-hover": "#E85A00",
+            "on-error-container": "#93000a",
+            "info-dark": "#60A5FA",
+            "text-light": "#111111",
+            "warning-light": "#D97706",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#312f2b",
+            "surface-container": "#f9ebe2",
+            "on-secondary-fixed": "#1e1b18",
+            "surface-bright": "#fff8f5",
+            "bg-light": "#FFFDFB",
+            "on-primary-container": "#551d00",
+            "inverse-on-surface": "#fceee5",
+            "surface-variant": "#ede0d7",
+            "primary-fixed": "#ffdbcd",
+            "on-primary-fixed": "#360f00",
+            "surface-dark": "#191817",
+            "border-dark": "#3A342F"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "space-2xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-3xl": "3rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "title-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-xl": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "title-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Material Symbols base styling */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbars for crisp native mobile feel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-body-md text-body-md transition-colors duration-200 antialiased selection:bg-primary-container selection:text-white pb-24">
+<!-- Outer Mobile Container: strictly 390px centered frame mimicking native device canvas -->
+<div class="w-full max-w-[390px] mx-auto min-h-screen bg-bg-light dark:bg-bg-dark relative flex flex-col shadow-2xl dark:shadow-none">
+<!-- Top App Bar (Shared Component Execution) -->
+<header class="sticky top-0 z-40 bg-surface-light dark:bg-surface-dark shadow-sm dark:shadow-none transition-colors duration-150">
+<!-- Brand & Mode Row -->
+<div class="flex items-center justify-between px-margin-mobile pt-space-sm pb-1">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-xl bg-primary-container flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined fill-icon text-lg" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary-container dark:text-brand-dark tracking-tight">FoodieLocal</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<!-- Light / Dark Mode Toggle button (Interactive) -->
+<button aria-label="Cambiar tema" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-alt-light dark:hover:bg-surface-alt-dark transition-colors duration-150 active:scale-95 text-text-secondary-light dark:text-text-secondary-dark" id="themeToggle">
+<span class="material-symbols-outlined" data-icon="dark_mode" id="themeIcon">dark_mode</span>
+</button>
+<!-- Notifications with unread indicator -->
+<button aria-label="Notificaciones" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-alt-light dark:hover:bg-surface-alt-dark transition-colors duration-150 active:scale-95 text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-light dark:ring-surface-dark"></span>
+</button>
+</div>
+</div>
+<!-- Address Selector Bar (Shared Component Layout) -->
+<div class="flex justify-between items-center w-full px-margin-mobile pb-space-sm">
+<button class="flex items-center gap-space-xs text-left group max-w-[85%]">
+<span class="material-symbols-outlined text-primary-container dark:text-brand-dark text-xl flex-shrink-0" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex flex-col truncate">
+<span class="font-caption text-caption text-text-secondary-light dark:text-text-secondary-dark">Entregar en</span>
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-text-light dark:text-text-dark font-bold truncate">Av. Corrientes 1234, CABA</span>
+<span class="material-symbols-outlined text-sm text-text-secondary-light dark:text-text-secondary-dark group-hover:translate-y-0.5 transition-transform" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-brand-soft text-primary-container dark:bg-brand-dark-soft dark:text-brand-dark font-caption text-caption font-bold">15-25 min</span>
+</div>
+</header>
+<!-- Main Discovery Flow Canvas -->
+<main class="flex-1 flex flex-col space-y-space-lg px-margin-mobile pt-space-md">
+<!-- Prominent Search Bar with Filter Button -->
+<div class="w-full flex items-center gap-space-xs">
+<div class="flex-1 relative flex items-center bg-surface-light dark:bg-surface-dark rounded-full h-11 px-4 shadow-[0_2px_8px_-2px_rgba(17,17,17,0.06)] border border-border-light dark:border-border-dark focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark mr-2 text-xl" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md text-text-light dark:text-text-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark focus:ring-0 focus:outline-none" placeholder="¿Qué estás buscando hoy?" type="text"/>
+</div>
+<button aria-label="Filtros avanzados" class="w-11 h-11 rounded-full bg-primary-container hover:bg-brand-hover active:scale-95 flex items-center justify-center text-white flex-shrink-0 transition-transform shadow-md">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Hero Promotional Banner (50% OFF Card with Photo & CTA) -->
+<section class="relative w-full rounded-2xl overflow-hidden bg-[#241712] text-white shadow-md">
+<!-- Visual Food Scene Background -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-85 object-center" data-alt="A gourmet artisan cheeseburger with caramelized onions and melting cheddar, served alongside crisp golden french fries and fresh condiments. Shot from a close-up angle with warm cinematic food studio lighting that creates a bright, modern light-mode aesthetic. The composition highlights deep rich blacks and vibrant warm orange accents matching the modern delivery app palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM2v-jql2zAzZA5-Ky9GPf1qrCZT_pMUubXDSuwS77o3vBpjsujOk3tGe0vSHXK886qf4Obt9WOzulrAMUxo0Clk39ruglMuUmBqj97njvS3-XdP3m0dd6OOROtaSakbj1Ao5N6QyDnBVufJGAQNX4GIsCCOyVAZF-IbNTdEN-QoEEQ6DNHcIFR9waNfMDZWTACZCbcX3MBQf3A6F4dizm2A0ZGPAw8vazjMJ1hKUlYElQ2ikqoT33GA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-[#1b100b] via-[#1b100be6] to-transparent"></div>
+</div>
+<div class="relative z-10 p-space-md flex flex-col justify-between min-h-[160px] max-w-[65%]">
+<div>
+<div class="inline-flex items-center gap-1 bg-primary-container text-white px-2 py-0.5 rounded-full mb-1.5 font-caption text-caption uppercase tracking-wider font-extrabold shadow-sm">
+<span class="material-symbols-outlined text-xs" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+              PROMO EXCLUSIVA
+            </div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-white font-extrabold leading-tight">
+              50% OFF
+            </h2>
+<p class="font-body-sm text-body-sm text-[#F3E6DD] mt-0.5 line-clamp-1">
+              En tu primer pedido local
+            </p>
+</div>
+<div class="pt-2">
+<button class="h-9 px-4 rounded-xl bg-primary-container hover:bg-brand-hover active:scale-98 transition-all text-white font-label-md text-label-md font-bold shadow-sm inline-flex items-center gap-1.5">
+<span>Pedir ahora</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Horizontal Categories Bar (Chips with Visual Accents) -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-text-light dark:text-text-dark font-bold">Categorías</h3>
+<button class="font-label-md text-label-md text-primary-container dark:text-brand-dark hover:underline">Ver todas</button>
+</div>
+<div class="flex items-center gap-space-sm overflow-x-auto no-scrollbar py-1 -mx-margin-mobile px-margin-mobile">
+<!-- Category 1: Restaurantes (Active state) -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-brand-soft dark:bg-brand-dark-soft border-2 border-primary-container dark:border-brand-dark flex items-center justify-center text-primary-container dark:text-brand-dark shadow-sm group-active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl fill-icon" data-icon="lunch_dining" style="font-variation-settings: 'FILL' 1;">lunch_dining</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm font-bold text-primary-container dark:text-brand-dark">Restaurantes</span>
+</button>
+<!-- Category 2: Supermercado -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark group-hover:text-primary-container group-active:scale-95 transition-transform shadow-[0_2px_8px_-2px_rgba(17,17,17,0.04)]">
+<span class="material-symbols-outlined text-2xl" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm text-text-light dark:text-text-dark font-medium">Supermercado</span>
+</button>
+<!-- Category 3: Cafetería -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark group-hover:text-primary-container group-active:scale-95 transition-transform shadow-[0_2px_8px_-2px_rgba(17,17,17,0.04)]">
+<span class="material-symbols-outlined text-2xl" data-icon="local_cafe">local_cafe</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm text-text-light dark:text-text-dark font-medium">Cafetería</span>
+</button>
+<!-- Category 4: Farmacia -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark group-hover:text-primary-container group-active:scale-95 transition-transform shadow-[0_2px_8px_-2px_rgba(17,17,17,0.04)]">
+<span class="material-symbols-outlined text-2xl" data-icon="medication">medication</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm text-text-light dark:text-text-dark font-medium">Farmacia</span>
+</button>
+<!-- Category 5: Verdulería -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark group-hover:text-primary-container group-active:scale-95 transition-transform shadow-[0_2px_8px_-2px_rgba(17,17,17,0.04)]">
+<span class="material-symbols-outlined text-2xl" data-icon="nutrition">nutrition</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm text-text-light dark:text-text-dark font-medium">Verdulería</span>
+</button>
+<!-- Category 6: Mascotas -->
+<button class="flex flex-col items-center flex-shrink-0 group focus:outline-none">
+<div class="w-14 h-14 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center text-text-secondary-light dark:text-text-secondary-dark group-hover:text-primary-container group-active:scale-95 transition-transform shadow-[0_2px_8px_-2px_rgba(17,17,17,0.04)]">
+<span class="material-symbols-outlined text-2xl" data-icon="pets">pets</span>
+</div>
+<span class="mt-1.5 font-label-sm text-label-sm text-text-light dark:text-text-dark font-medium">Mascotas</span>
+</button>
+</div>
+</section>
+<!-- Ofertas del Día Section (Horizontal Swipeable Bento & Deals) -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container dark:text-brand-dark" data-icon="local_offer" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+<h3 class="font-title-sm text-title-sm text-text-light dark:text-text-dark font-bold">Ofertas del Día</h3>
+</div>
+<span class="font-caption text-caption text-text-secondary-light dark:text-text-secondary-dark font-bold">ACTUALIZADO HOY</span>
+</div>
+<!-- Deal Card with Sponsored Placement -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-3 border border-border-light dark:border-border-dark shadow-sm flex gap-3 relative overflow-hidden">
+<div class="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-alt-light dark:bg-surface-alt-dark">
+<img class="w-full h-full object-cover" data-alt="Crispy artisanal fried chicken burger topped with creamy coleslaw and spicy chipotle sauce, presented on a rustic dark board. Shot with high-key lighting that creates a bright, modern light-mode aesthetic. The composition emphasizes vibrant natural food tones with deep blacks and bold warm orange contrasts characteristic of premium gastronomy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKvOU2aHRL9_hPljwo7caBfViJnFAck4Q3jGBwxZeFvq_2KGQ41gOkA-NoDAS25oRNBNG98lgXTdOl7OVUQhpjCZ25ljGqcXwEelS5rwHygASuTyra468OtxhkeoGx37Sj_SA3zIOH3O-Q_MxkNl4k7a1e4NEDwCVxN5FtWUHEz5iJze_wgKfaAaCjLPl8Cm_jwT2PCTvfqyaIyKbhaIeomhUUESNuqX6nKUUx14zY7rfsmCnmkdxWvg"/>
+<span class="absolute top-1 left-1 bg-error-light text-white font-caption text-caption px-1.5 py-0.5 rounded-md font-bold uppercase tracking-tight">
+              -30%
+            </span>
+</div>
+<div class="flex-1 flex flex-col justify-between py-0.5">
+<div>
+<div class="flex items-center justify-between mb-0.5">
+<span class="bg-surface-alt-light dark:bg-surface-alt-dark text-text-secondary-light dark:text-text-secondary-dark px-1.5 py-0.5 rounded text-[9px] font-bold tracking-wider">
+                  PUBLICIDAD
+                </span>
+<span class="text-success-light dark:text-success-dark font-caption text-caption font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                </span>
+</div>
+<h4 class="font-label-lg text-label-lg text-text-light dark:text-text-dark font-bold line-clamp-1">Combo Crispy Burger + Papas</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light dark:text-text-secondary-dark line-clamp-1">Burger King San Nicolás</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div class="flex items-baseline gap-1.5">
+<span class="font-label-lg text-label-lg font-extrabold text-primary-container dark:text-brand-dark">$5.400 ARS</span>
+<span class="font-caption text-caption text-text-secondary-light dark:text-text-secondary-dark line-through">$7.800</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-brand-soft dark:bg-brand-dark-soft text-primary-container dark:text-brand-dark flex items-center justify-center hover:bg-primary-container hover:text-white transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Comercios Destacados (Clean Merchant Cards) -->
+<section class="space-y-space-md pb-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container dark:text-brand-dark" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-title-sm text-title-sm text-text-light dark:text-text-dark font-bold">Comercios Destacados</h3>
+</div>
+<button class="font-label-md text-label-md text-primary-container dark:text-brand-dark hover:underline">Ver mapa</button>
+</div>
+<!-- Merchant Card 1: Pizzería Napolitana -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm transition-all hover:shadow-md">
+<div class="relative w-full h-36 bg-surface-alt-light dark:bg-surface-alt-dark">
+<img class="w-full h-full object-cover" data-alt="An authentic wood-fired Neapolitan pizza with blistered crust, melted fresh buffalo mozzarella, crushed San Marzano tomatoes, and vibrant fresh basil leaves. Captured from an elevated tabletop angle under warm restaurant illumination, evoking deep rich blacks and vibrant red-orange tomato tones consistent with modern culinary delivery design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdhWXKS7rIJdiT8VTzvo9PI7kE1XX9hB8NRxDXHhIUT_wDZNGZ8h02dA0SGp_-bFnE5mUbfU5hTekef3-gH0jaD2uYVCSEYxsa2C0ooz35vuqndM-XLtnJ9BGDq-3i2RM2p5ZBi4oaoYCP8-H1dJ7wb9BuYETEH5vLs0QstZhrjmIX9zF6VwqvGh0Dip7si7LA_KnHSQXqkeduq_hdyRFBsLUieJ-Yya3UV4gwU4sx3aE4ATHFb_G1Q"/>
+<!-- Badges Layer -->
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-sm text-success-light dark:text-success-dark font-caption text-caption font-bold px-2 py-1 rounded-full flex items-center gap-0.5 shadow-sm">
+<span class="material-symbols-outlined text-xs" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.8 (340+)
+              </span>
+<span class="bg-primary-container text-white font-caption text-caption font-bold px-2 py-1 rounded-full shadow-sm">
+                OFERTA
+              </span>
+</div>
+<!-- Favorite toggle button (44px touch target) -->
+<button aria-label="Guardar en favoritos" class="absolute top-2 right-2 w-11 h-11 flex items-center justify-center rounded-full bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-sm text-text-light dark:text-text-dark hover:text-primary-container transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-space-md">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-lg text-label-lg text-text-light dark:text-text-dark font-bold leading-tight">Pizzería Napolitana Gourmet</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light dark:text-text-secondary-dark mt-0.5">Pizzas a la leña · Pastas caseras · Italiana</p>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-3 pt-3 border-t border-border-light/70 dark:border-border-dark/70 font-caption text-caption text-text-secondary-light dark:text-text-secondary-dark font-semibold">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary-container dark:text-brand-dark" data-icon="schedule">schedule</span>
+<span>20-30 min</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1 text-success-light dark:text-success-dark">
+<span class="material-symbols-outlined text-sm" data-icon="delivery_dining">delivery_dining</span>
+<span>Envío Gratis</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="distance">distance</span>
+<span>1.2 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Merchant Card 2: Green Bowl Poke & Salads -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm transition-all hover:shadow-md">
+<div class="relative w-full h-36 bg-surface-alt-light dark:bg-surface-alt-dark">
+<img class="w-full h-full object-cover" data-alt="A colorful fresh salmon poke bowl loaded with ripe avocado cubes, edamame beans, grated carrots, and toasted sesame seeds in a ceramic bowl. Shot with crisp clean lighting that creates a bright, modern light-mode aesthetic, presenting fresh natural greens and vibrant orange accents in harmony with clean digital delivery branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvuOSS1Kz4qd9h5FlrIU6wO1oE9_QXAtdEksL0f1pDLeCnKVX9SUw5Uyj0Vso65dlYGtE8XFE5WFxOZg-Q_RKWGWp1SThpIV2XYu1bQYc9Ts7dYpOCscXOZqklAFsVW4eL7D50BKI7JteckOMIJYwj_Eg8_7KeHpSDbWOw1D2Uoxm-3sFDcxaR9M5WQwHINB3J4UJdc8IcuRbBEUDx-1s7eNDMYRLyVT5szUWIh-qGSmYz45R-dl5pog"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-sm text-success-light dark:text-success-dark font-caption text-caption font-bold px-2 py-1 rounded-full flex items-center gap-0.5 shadow-sm">
+<span class="material-symbols-outlined text-xs" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.7 (180+)
+              </span>
+</div>
+<button aria-label="Guardar en favoritos" class="absolute top-2 right-2 w-11 h-11 flex items-center justify-center rounded-full bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-sm text-text-light dark:text-text-dark hover:text-primary-container transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-space-md">
+<div>
+<h4 class="font-label-lg text-label-lg text-text-light dark:text-text-dark font-bold leading-tight">Green Bowl &amp; Poke Fresh</h4>
+<p class="font-body-sm text-body-sm text-text-secondary-light dark:text-text-secondary-dark mt-0.5">Poke Bowls · Ensaladas · Orgánico &amp; Saludable</p>
+</div>
+<div class="flex items-center gap-3 mt-3 pt-3 border-t border-border-light/70 dark:border-border-dark/70 font-caption text-caption text-text-secondary-light dark:text-text-secondary-dark font-semibold">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary-container dark:text-brand-dark" data-icon="schedule">schedule</span>
+<span>15-25 min</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1 text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-sm" data-icon="delivery_dining">delivery_dining</span>
+<span>Envío $450 ARS</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="distance">distance</span>
+<span>0.8 km</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Execution) -->
+<!-- Destination count: 5. Labels: ["Inicio", "Explorar", "Pedidos", "Ofertas", "Perfil"] -->
+<!-- Active state mapped strictly to "Inicio" -->
+<nav aria-label="Navegación principal" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter-mobile bg-surface-light dark:bg-surface-dark max-w-md mx-auto shadow-lg dark:shadow-none">
+<!-- Destination 1: Inicio (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-brand-dark font-bold min-w-[56px] h-full focus:outline-none" href="#inicio">
+<span class="material-symbols-outlined fill-icon text-2xl" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-caption text-caption mt-0.5">Inicio</span>
+</a>
+<!-- Destination 2: Explorar (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark hover:text-primary-container dark:hover:text-brand-dark transition-colors duration-150 min-w-[56px] h-full focus:outline-none" href="#explorar">
+<span class="material-symbols-outlined text-2xl" data-icon="search">search</span>
+<span class="font-caption text-caption mt-0.5">Explorar</span>
+</a>
+<!-- Destination 3: Pedidos (INACTIVE with Active Order Badge '1') -->
+<a class="relative flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark hover:text-primary-container dark:hover:text-brand-dark transition-colors duration-150 min-w-[56px] h-full focus:outline-none" href="#pedidos">
+<div class="relative">
+<span class="material-symbols-outlined text-2xl" data-icon="receipt_long">receipt_long</span>
+<span class="absolute -top-1 -right-2 bg-primary-container text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-surface-light dark:ring-surface-dark">
+            1
+          </span>
+</div>
+<span class="font-caption text-caption mt-0.5">Pedidos</span>
+</a>
+<!-- Destination 4: Ofertas (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark hover:text-primary-container dark:hover:text-brand-dark transition-colors duration-150 min-w-[56px] h-full focus:outline-none" href="#ofertas">
+<span class="material-symbols-outlined text-2xl" data-icon="local_offer">local_offer</span>
+<span class="font-caption text-caption mt-0.5">Ofertas</span>
+</a>
+<!-- Destination 5: Perfil (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark hover:text-primary-container dark:hover:text-brand-dark transition-colors duration-150 min-w-[56px] h-full focus:outline-none" href="#perfil">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-caption text-caption mt-0.5">Perfil</span>
+</a>
+</nav>
+</div>
+<!-- Inline Script for Interactive Light/Dark Theme Switcher -->
+<script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        themeIcon.textContent = 'dark_mode';
+      } else {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+        themeIcon.textContent = 'light_mode';
+      }
+    });
+  </script>
+</body></html>

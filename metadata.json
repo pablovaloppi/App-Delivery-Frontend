@@ -1,0 +1,6 @@
+{
+  "name": "FoodieLocal - Marketplace de Delivery",
+  "description": "Marketplace local de delivery con pedidos en tiempo real, catálogo para comercios y despacho para cadetes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

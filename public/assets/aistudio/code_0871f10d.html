@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Métodos de Pago - Foodie</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "text-secondary-light": "#6B625B",
+            "bg-light": "#FFFDFB",
+            "bg-dark": "#121110",
+            "primary-fixed-dim": "#ffb596",
+            "on-tertiary-fixed-variant": "#494642",
+            "tertiary-fixed": "#e7e2dc",
+            "brand-dark-hover": "#FF8A26",
+            "primary-fixed": "#ffdbcd",
+            "text-dark": "#FAF8F5",
+            "outline-variant": "#e3bfb1",
+            "info-dark": "#60A5FA",
+            "brand-dark-soft": "#3A2112",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#5a4136",
+            "surface-variant": "#ede0d7",
+            "outline": "#8e7164",
+            "surface-dark": "#191817",
+            "surface-tint": "#a33e00",
+            "surface-alt-dark": "#28231F",
+            "brand-dark-pressed": "#D95E00",
+            "success-dark": "#2BBE6C",
+            "surface-dim": "#e4d8cf",
+            "inverse-on-surface": "#fceee5",
+            "success-light": "#22A35A",
+            "tertiary-container": "#9a9691",
+            "text-light": "#111111",
+            "surface-container-highest": "#ede0d7",
+            "surface-container-high": "#f3e6dd",
+            "on-background": "#211a15",
+            "on-primary-fixed": "#360f00",
+            "text-secondary-dark": "#B9B0A8",
+            "border-light": "#E9E2DC",
+            "surface-soft-dark": "#211E1B",
+            "secondary-fixed-dim": "#ccc5c1",
+            "surface-container-low": "#fef1e8",
+            "surface-container": "#f9ebe2",
+            "inverse-primary": "#ffb596",
+            "error-container": "#ffdad6",
+            "brand-soft": "#FFF1E8",
+            "on-surface": "#211a15",
+            "brand-pressed": "#CC4F00",
+            "surface-light": "#FFFFFF",
+            "on-tertiary-fixed": "#1d1b18",
+            "error-light": "#D92D20",
+            "on-primary-container": "#551d00",
+            "tertiary": "#615e59",
+            "surface-bright": "#fff8f5",
+            "secondary": "#625d5a",
+            "on-primary": "#ffffff",
+            "surface-soft-light": "#FFF7F2",
+            "on-secondary-fixed": "#1e1b18",
+            "brand-hover": "#E85A00",
+            "background": "#fff8f5",
+            "primary-container": "#ff6500",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "info-light": "#3B82F6",
+            "surface-alt-light": "#F6F0EA",
+            "brand-dark": "#FF7600",
+            "warning-light": "#D97706",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#e9e1dc",
+            "surface": "#fff8f5",
+            "secondary-fixed": "#e9e1dc",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#4a4643",
+            "on-secondary-container": "#686360",
+            "inverse-surface": "#362f29",
+            "tertiary-fixed-dim": "#cbc6c0",
+            "on-primary-fixed-variant": "#7d2d00",
+            "warning-dark": "#F59E0B",
+            "error-dark": "#F04438",
+            "border-dark": "#3A342F",
+            "primary": "#a33e00",
+            "on-tertiary-container": "#312f2b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin": "1.5rem",
+            "space-2xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-3xl": "3rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "title-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "title-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Touch target helper */
+    .touch-target {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    /* Hide scrollbar for clean app experience */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-light text-text-light font-body-md antialiased min-h-full flex justify-center selection:bg-brand-soft selection:text-primary-container">
+<!-- Mobile Screen Canvas Container (390px base responsive shell) -->
+<div class="w-full max-w-md bg-bg-light min-h-screen flex flex-col relative pb-32 shadow-xl shadow-stone-200/50">
+<!-- 1. Header / Top Navigation Bar (Task-Focused with Back Action) -->
+<header class="sticky top-0 z-40 bg-bg-light/95 backdrop-blur-md px-margin-mobile py-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Volver" class="touch-target flex items-center justify-center rounded-full text-text-light hover:bg-surface-alt-light active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-text-light">Métodos de Pago</h1>
+</div>
+<button aria-label="Seguridad y Ayuda" class="touch-target flex items-center justify-center rounded-full text-text-secondary-light hover:bg-surface-alt-light active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-[24px]">help_outline</span>
+</button>
+</header>
+<!-- Main Scrollable Content Area -->
+<main class="flex-1 px-margin-mobile space-y-space-lg pt-space-xs">
+<!-- 2. Billetera Local / Saldo en Cuenta (Foodie Wallet Card) -->
+<section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E1916] via-[#2A1F18] to-[#171311] p-5 text-text-dark shadow-sm">
+<!-- Ambient Brand Blur Light Effect -->
+<div class="absolute -right-8 -bottom-10 w-44 h-44 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+<div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-7xl text-white">account_balance_wallet</span>
+</div>
+<div class="relative z-10 space-y-4">
+<!-- Top Row: Badge & Status -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success-dark animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-brand-dark tracking-wide uppercase">Foodie Pay</span>
+</div>
+<span class="inline-flex items-center gap-1 font-caption text-caption bg-white/10 px-2.5 py-1 rounded-full text-surface-variant backdrop-blur-sm">
+<span class="material-symbols-outlined text-[13px] text-success-dark" style="font-variation-settings: 'FILL' 1;">verified</span>
+              Activo
+            </span>
+</div>
+<!-- Balance Area -->
+<div>
+<p class="font-caption text-caption text-text-secondary-dark tracking-wider uppercase">Saldo disponible en Foodie Pay</p>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-headline-xl text-headline-xl text-white tracking-tight">$12.450</span>
+<span class="font-label-lg text-label-lg text-text-secondary-dark">ARS</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-dark mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed">bolt</span>
+              Activo para compras inmediatas y reembolsos
+            </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<button class="touch-target flex items-center justify-center gap-2 bg-primary-container hover:bg-brand-hover active:bg-brand-pressed text-on-primary font-label-lg text-label-lg rounded-xl transition-all duration-150 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Cargar Saldo</span>
+</button>
+<button class="touch-target flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-label-lg text-label-lg rounded-xl transition-all duration-150 active:scale-95 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Movimientos</span>
+</button>
+</div>
+<!-- Auto-use in checkout toggle item -->
+<div class="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+<label class="flex flex-col cursor-pointer flex-1" for="wallet-auto-use">
+<span class="font-label-md text-label-md text-white">Usar saldo automáticamente</span>
+<span class="font-caption text-caption text-text-secondary-dark">Se aplicará primero en el próximo checkout</span>
+</label>
+<div class="relative inline-flex items-center">
+<input checked="" class="sr-only peer" id="wallet-auto-use" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-alt-dark peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container cursor-pointer"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Tarjetas Guardadas (2) -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-text-light">Tarjetas Guardadas</h2>
+<span class="bg-surface-alt-light text-text-secondary-light font-label-sm text-label-sm px-2 py-0.5 rounded-full">2</span>
+</div>
+<span class="font-caption text-caption text-text-secondary-light tracking-wide">DÉBITO / CRÉDITO</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Tarjeta 1: VISA (Predeterminada / Activa) -->
+<article class="bg-surface-light rounded-2xl p-4 border-2 border-primary-container shadow-sm relative overflow-hidden transition-all duration-150">
+<!-- Active Selected Indicator Accent -->
+<div class="absolute top-0 right-0 w-16 h-16 pointer-events-none">
+<div class="w-32 h-6 bg-brand-soft -rotate-45 translate-x-3 -translate-y-4"></div>
+</div>
+<div class="flex items-start justify-between gap-3 relative z-10">
+<!-- Left: Card Icon & Details -->
+<div class="flex items-start gap-3.5 flex-1">
+<!-- Card Issuer Brand Emblem -->
+<div class="w-12 h-9 rounded-lg bg-surface-alt-light border border-border-light flex items-center justify-center p-1.5 shrink-0 shadow-xs">
+<!-- Visa Brand Representation -->
+<span class="font-extrabold italic tracking-tighter text-blue-800 text-[14px]">VISA</span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<p class="font-label-lg text-label-lg text-text-light truncate">•••• •••• •••• 4821</p>
+<span class="inline-flex items-center gap-1 bg-brand-soft text-primary-container font-label-sm text-label-sm px-2 py-0.5 rounded-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                      Predeterminada
+                    </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light">
+                    Vence 08/28 <span class="mx-1">•</span> <span class="font-semibold text-text-light">MARTÍN RODRÍGUEZ</span>
+</p>
+</div>
+</div>
+<!-- Right: Radio Button Selected -->
+<div class="touch-target flex items-center justify-center -mr-2 -mt-2 shrink-0">
+<div class="w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center bg-primary-container">
+<div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+</div>
+</div>
+</div>
+<!-- Card Bottom Bar: Quick Actions -->
+<div class="mt-3.5 pt-3 border-t border-border-light flex items-center justify-between text-text-secondary-light">
+<span class="font-caption text-caption text-success-light flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                Verificada para pagos 1-Click
+              </span>
+<div class="flex items-center gap-2">
+<button class="font-label-sm text-label-sm text-text-secondary-light hover:text-text-light px-2 py-1 rounded hover:bg-surface-alt-light transition-colors">
+                  Editar
+                </button>
+<button aria-label="Más opciones" class="touch-target w-7 h-7 flex items-center justify-center text-text-secondary-light hover:text-text-light rounded-full hover:bg-surface-alt-light">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Tarjeta 2: Mastercard Débito (Inactiva / Secundaria) -->
+<article class="bg-surface-light rounded-2xl p-4 border border-border-light hover:border-outline-variant shadow-xs transition-all duration-150">
+<div class="flex items-start justify-between gap-3">
+<!-- Left: Card Icon & Details -->
+<div class="flex items-start gap-3.5 flex-1">
+<!-- Mastercard Brand Emblem -->
+<div class="w-12 h-9 rounded-lg bg-surface-alt-light border border-border-light flex items-center justify-center p-1 shrink-0">
+<div class="flex items-center -space-x-2">
+<div class="w-4 h-4 rounded-full bg-[#EB001B] opacity-90"></div>
+<div class="w-4 h-4 rounded-full bg-[#F79E1B] opacity-90"></div>
+</div>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-label-lg text-label-lg text-text-light truncate">•••• •••• •••• 9034</p>
+<span class="font-caption text-caption text-text-secondary-light bg-surface-alt-light px-1.5 py-0.5 rounded">Débito</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light">
+                    Vence 11/27 <span class="mx-1">•</span> Banco Santander
+                  </p>
+</div>
+</div>
+<!-- Right: Radio Button Unselected -->
+<button aria-label="Seleccionar como predeterminada" class="touch-target flex items-center justify-center -mr-2 -mt-2 shrink-0 group">
+<div class="w-6 h-6 rounded-full border-2 border-border-light group-hover:border-primary-container flex items-center justify-center transition-colors"></div>
+</button>
+</div>
+<!-- Card Bottom Bar: Quick Set Default -->
+<div class="mt-3.5 pt-3 border-t border-border-light/60 flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary-light">Sin costos extra por procesamiento</span>
+<button class="font-label-sm text-label-sm text-primary-container hover:text-brand-hover font-semibold py-1 px-2 rounded-lg hover:bg-brand-soft active:scale-95 transition-all">
+                Elegir como predeterminada
+              </button>
+</div>
+</article>
+</div>
+</section>
+<!-- 4. Cuentas Digitales Vinculadas (Mercado Pago) -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline-md text-headline-md text-text-light">Billeteras Virtuales &amp; FinTech</h2>
+<span class="font-caption text-caption text-success-light font-semibold uppercase">1 Conectada</span>
+</div>
+<div class="bg-surface-light rounded-2xl p-4 border border-border-light shadow-xs space-y-3">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<!-- Mercado Pago Brand Icon Block -->
+<div class="w-12 h-10 rounded-xl bg-[#009EE3]/10 border border-[#009EE3]/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px] text-[#009EE3]">handshake</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<h3 class="font-label-lg text-label-lg text-text-light">Mercado Pago</h3>
+<span class="inline-flex items-center gap-0.5 font-caption text-caption text-success-light bg-emerald-50 px-2 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Vinculado
+                  </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light truncate">martin.rodriguez@email.com</p>
+</div>
+</div>
+<!-- Context menu / unbind -->
+<button aria-label="Opciones de cuenta" class="touch-target w-8 h-8 flex items-center justify-center text-text-secondary-light hover:text-text-light rounded-full hover:bg-surface-alt-light">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Feature Pill & Quick Action -->
+<div class="bg-surface-alt-light rounded-xl p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-primary-container shrink-0">speed</span>
+<span class="font-body-sm text-body-sm text-text-light truncate">Pago sin salir de la app (Dinero en cuenta o cuotas)</span>
+</div>
+<button class="font-label-sm text-label-sm text-text-secondary-light hover:text-error-light shrink-0 px-2 py-1">
+              Desvincular
+            </button>
+</div>
+</div>
+</section>
+<!-- 5. Otras Formas de Pago (Efectivo) -->
+<section class="space-y-space-sm">
+<h2 class="font-headline-md text-headline-md text-text-light px-1">Otras Formas de Pago</h2>
+<div class="bg-surface-light rounded-2xl p-4 border border-border-light shadow-xs flex items-center justify-between gap-3">
+<div class="flex items-start gap-3.5 flex-1">
+<div class="w-12 h-10 rounded-xl bg-surface-alt-light border border-border-light flex items-center justify-center shrink-0 text-text-secondary-light">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+<div class="space-y-0.5">
+<h3 class="font-label-lg text-label-lg text-text-light">Efectivo al recibir el pedido</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light">
+                Pagarás en mano al repartidor. Tené cambio listo al momento de la entrega.
+              </p>
+</div>
+</div>
+<div class="relative inline-flex items-center shrink-0">
+<input checked="" class="sr-only peer" id="cash-payment-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-alt-dark/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container cursor-pointer"></div>
+</div>
+</div>
+</section>
+<!-- 6. Seguridad & Transparencia (PCI-DSS & SSL Trust Banner) -->
+<section class="rounded-2xl p-4 bg-surface-alt-light/70 border border-border-light flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 text-text-secondary-light shadow-xs border border-border-light">
+<span class="material-symbols-outlined text-[20px] text-text-secondary-light" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary-light leading-relaxed">
+          Tus datos bancarios están <strong class="text-text-light font-semibold">100% encriptados</strong> y protegidos bajo estándares internacionales <strong class="text-text-light font-semibold">PCI-DSS</strong>. Nunca almacenamos tu código de seguridad (CVV).
+        </p>
+</section>
+</main>
+<!-- 7. Fixed Bottom Sticky Container: Primary CTA -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-bg-light/95 backdrop-blur-lg border-t border-border-light/80 p-margin-mobile flex justify-center">
+<div class="w-full max-w-md">
+<button class="w-full h-12 touch-target bg-primary-container hover:bg-brand-hover active:bg-brand-pressed text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-md shadow-primary-container/20 transition-all duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[22px]">add_card</span>
+<span>Agregar Nueva Tarjeta o Cuenta</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

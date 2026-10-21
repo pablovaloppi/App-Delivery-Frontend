@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pizza Margherita Especial - Detalle de Producto</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "brand-dark": "#FF7600",
+            "on-secondary-fixed-variant": "#4a4643",
+            "primary-fixed-dim": "#ffb596",
+            "surface-soft-light": "#FFF7F2",
+            "bg-dark": "#121110",
+            "error-dark": "#F04438",
+            "secondary-container": "#e9e1dc",
+            "brand-dark-soft": "#3A2112",
+            "on-tertiary-fixed": "#1d1b18",
+            "brand-pressed": "#CC4F00",
+            "error-container": "#ffdad6",
+            "tertiary": "#615e59",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f5",
+            "surface-soft-dark": "#211E1B",
+            "secondary-fixed-dim": "#ccc5c1",
+            "text-secondary-light": "#6B625B",
+            "tertiary-fixed-dim": "#cbc6c0",
+            "secondary-fixed": "#e9e1dc",
+            "on-error-container": "#93000a",
+            "bg-light": "#FFFDFB",
+            "brand-soft": "#FFF1E8",
+            "surface-container-lowest": "#ffffff",
+            "error-light": "#D92D20",
+            "primary": "#a33e00",
+            "surface-tint": "#a33e00",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#7d2d00",
+            "on-primary-container": "#551d00",
+            "on-surface-variant": "#5a4136",
+            "inverse-primary": "#ffb596",
+            "on-surface": "#211a15",
+            "inverse-surface": "#362f29",
+            "warning-dark": "#F59E0B",
+            "on-primary-fixed": "#360f00",
+            "text-secondary-dark": "#B9B0A8",
+            "surface-dim": "#e4d8cf",
+            "primary-container": "#ff6500",
+            "tertiary-container": "#9a9691",
+            "border-dark": "#3A342F",
+            "text-light": "#111111",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#e7e2dc",
+            "brand-hover": "#E85A00",
+            "brand-dark-pressed": "#D95E00",
+            "on-secondary-container": "#686360",
+            "on-background": "#211a15",
+            "info-light": "#3B82F6",
+            "outline-variant": "#e3bfb1",
+            "surface-container-high": "#f3e6dd",
+            "surface-container-low": "#fef1e8",
+            "brand-dark-hover": "#FF8A26",
+            "surface-alt-dark": "#28231F",
+            "secondary": "#625d5a",
+            "primary-fixed": "#ffdbcd",
+            "outline": "#8e7164",
+            "surface-light": "#FFFFFF",
+            "surface-alt-light": "#F6F0EA",
+            "surface-dark": "#191817",
+            "on-tertiary-container": "#312f2b",
+            "warning-light": "#D97706",
+            "success-dark": "#2BBE6C",
+            "surface-container": "#f9ebe2",
+            "surface-container-highest": "#ede0d7",
+            "info-dark": "#60A5FA",
+            "inverse-on-surface": "#fceee5",
+            "border-light": "#E9E2DC",
+            "surface": "#fff8f5",
+            "success-light": "#22A35A",
+            "on-primary": "#ffffff",
+            "text-dark": "#FAF8F5",
+            "background": "#fff8f5",
+            "on-tertiary-fixed-variant": "#494642",
+            "surface-variant": "#ede0d7",
+            "on-secondary-fixed": "#1e1b18",
+            "on-secondary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-2xl": "2.5rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-sm": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-alt-light font-body-md text-text-light antialiased min-h-screen flex justify-center items-center p-0 md:p-6">
+<!-- Mobile Viewport Shell (390px base width) -->
+<main class="w-full max-w-[390px] bg-bg-light min-h-screen md:min-h-[844px] md:h-[844px] shadow-2xl md:rounded-[40px] flex flex-col relative overflow-hidden">
+<!-- Hero Photographic Banner Section -->
+<header class="relative w-full h-72 flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A gourmet artisan Margherita pizza viewed from an appetizing top-angle, topped with bubbling melted fior di latte mozzarella, vibrant red San Marzano pomodoro sauce, and fresh green basil leaves. Served warm on rustic baker parchment paper with warm, natural daylight highlighting the charred leopard crust in a clean culinary setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZZQX_2SdjXLLpS1K1lpkBmPoILFymMbDnJAhbOJbi8e79ov-i6JDJhWiZW9nQNTWJzM-LisYcc68tK2nMQBFTkkflX5Bjq0WJCvfMLxRlVk6_1dk4b5tMmjvmzqAObtpkxSpBrlFhzg0YHYFo5VrXXg7Zi-O4vgkyZ4tjtaKaT2weWQb0PuNawJ5pIMn7uJQChWQP9RUfv2yn_X-eqIUS9C_7i5dmpMAdNm9sSAjwy1rxVAzVAraVgw"/>
+<!-- Subtle Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-bg-light via-transparent to-black/30 pointer-events-none"></div>
+<!-- Floating Action Controls (44x44px Touch Targets) -->
+<div class="absolute top-4 left-0 right-0 px-margin-mobile flex items-center justify-between z-10">
+<!-- Close / Back Button -->
+<button aria-label="Volver atrás" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur shadow-md flex items-center justify-center text-text-light active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<!-- Right Quick Actions -->
+<div class="flex items-center space-x-2">
+<!-- Favorite Toggle Button -->
+<button aria-label="Guardar en favoritos" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur shadow-md flex items-center justify-center text-text-light active:scale-95 transition-transform duration-150" id="fav-btn" type="button">
+<span class="material-symbols-outlined text-[22px]" id="fav-icon">favorite_border</span>
+</button>
+<!-- Share Button -->
+<button aria-label="Compartir producto" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur shadow-md flex items-center justify-center text-text-light active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</div>
+</div>
+<!-- Floating Artisan Badge -->
+<div class="absolute bottom-3 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-light/90 backdrop-blur shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-caption font-caption text-text-light tracking-wider">HORNO DE LEÑA</span>
+</div>
+</header>
+<!-- Scrollable Detail Canvas -->
+<div class="flex-1 overflow-y-auto px-margin-mobile pt-3 pb-32 space-y-6">
+<!-- Header Info & Pricing -->
+<section class="space-y-2">
+<div class="flex items-start justify-between gap-3">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-text-light">
+            Pizza Margherita Especial
+          </h1>
+<span class="text-headline-md font-headline-md text-primary-container shrink-0" id="display-price-header">
+            $12.500
+          </span>
+</div>
+<p class="text-body-md font-body-md text-text-secondary-light leading-relaxed">
+          Masa madre fermentada por 48 hs, salsa pomodoro San Marzano, mozzarella fior di latte fundida, hojas de albahaca fresca y aceite de oliva virgen extra.
+        </p>
+<!-- Dietary / Quality Badges -->
+<div class="flex items-center gap-2 pt-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-alt-light text-text-secondary-light text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">eco</span> Vegetariano
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-alt-light text-text-secondary-light text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">timer</span> 20-30 min
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand-soft text-primary-container text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9 (148)
+          </span>
+</div>
+</section>
+<hr class="border-border-light my-1"/>
+<!-- Size Selector (Mandatory Variants) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<h2 class="text-label-lg font-label-lg text-text-light">Tamaño</h2>
+<span class="text-caption font-caption text-text-secondary-light">• Obligatorio</span>
+</div>
+<span class="text-caption font-caption text-primary-container font-bold px-2 py-0.5 rounded-full bg-brand-soft">Elegí 1</span>
+</div>
+<div aria-label="Selección de tamaño" class="grid grid-cols-3 gap-2.5" role="radiogroup">
+<!-- Size: Chica -->
+<label class="size-card cursor-pointer border border-border-light rounded-xl p-3 flex flex-col justify-between items-center text-center transition-all bg-surface-light min-h-[92px] active:scale-95">
+<input class="sr-only" data-label="Chica" name="pizza-size" type="radio" value="9800"/>
+<span class="text-label-md font-label-md text-text-light">Chica</span>
+<span class="text-caption font-caption text-text-secondary-light">4 porciones</span>
+<span class="text-label-md font-label-md text-text-light mt-1">$9.800</span>
+</label>
+<!-- Size: Mediana (Selected by default) -->
+<label class="size-card active-size cursor-pointer border-2 border-primary-container bg-brand-soft rounded-xl p-3 flex flex-col justify-between items-center text-center transition-all min-h-[92px] active:scale-95 shadow-sm">
+<input checked="" class="sr-only" data-label="Mediana" name="pizza-size" type="radio" value="12500"/>
+<div class="flex items-center gap-1">
+<span class="text-label-md font-label-md text-primary-container font-bold">Mediana</span>
+</div>
+<span class="text-caption font-caption text-text-secondary-light">6 porciones</span>
+<span class="text-label-md font-label-md text-primary-container font-bold mt-1">$12.500</span>
+</label>
+<!-- Size: Familiar -->
+<label class="size-card cursor-pointer border border-border-light rounded-xl p-3 flex flex-col justify-between items-center text-center transition-all bg-surface-light min-h-[92px] active:scale-95">
+<input class="sr-only" data-label="Familiar" name="pizza-size" type="radio" value="16900"/>
+<span class="text-label-md font-label-md text-text-light">Familiar</span>
+<span class="text-caption font-caption text-text-secondary-light">8 porciones</span>
+<span class="text-label-md font-label-md text-text-light mt-1">$16.900</span>
+</label>
+</div>
+</section>
+<hr class="border-border-light my-1"/>
+<!-- Additional Ingredients / Extras (Checkboxes) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-label-lg font-label-lg text-text-light">Ingredientes extra</h2>
+<p class="text-caption font-caption text-text-secondary-light">Opcional • Agregá sabor a tu gusto</p>
+</div>
+<span class="text-caption font-caption text-text-secondary-light">Máx. 4</span>
+</div>
+<div class="space-y-2">
+<!-- Extra 1: Mozzarella (Checked) -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-border-light bg-surface-light hover:bg-surface-alt-light/50 transition-colors cursor-pointer min-h-[52px]">
+<div class="flex items-center space-x-3">
+<input checked="" class="extra-checkbox w-5 h-5 text-primary-container rounded border-border-light focus:ring-primary-container focus:ring-offset-0" type="checkbox" value="1500"/>
+<span class="text-body-md font-body-md text-text-light">Extra Queso Mozzarella</span>
+</div>
+<span class="text-label-md font-label-md text-primary-container font-semibold">+$1.500</span>
+</label>
+<!-- Extra 2: Champiñones -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-border-light bg-surface-light hover:bg-surface-alt-light/50 transition-colors cursor-pointer min-h-[52px]">
+<div class="flex items-center space-x-3">
+<input class="extra-checkbox w-5 h-5 text-primary-container rounded border-border-light focus:ring-primary-container focus:ring-offset-0" type="checkbox" value="1200"/>
+<span class="text-body-md font-body-md text-text-light">Champiñones frescos</span>
+</div>
+<span class="text-label-md font-label-md text-text-secondary-light font-medium">+$1.200</span>
+</label>
+<!-- Extra 3: Jamón Crudo -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-border-light bg-surface-light hover:bg-surface-alt-light/50 transition-colors cursor-pointer min-h-[52px]">
+<div class="flex items-center space-x-3">
+<input class="extra-checkbox w-5 h-5 text-primary-container rounded border-border-light focus:ring-primary-container focus:ring-offset-0" type="checkbox" value="2200"/>
+<span class="text-body-md font-body-md text-text-light">Jamón Crudo estacionado</span>
+</div>
+<span class="text-label-md font-label-md text-text-secondary-light font-medium">+$2.200</span>
+</label>
+<!-- Extra 4: Aceitunas Negras -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-border-light bg-surface-light hover:bg-surface-alt-light/50 transition-colors cursor-pointer min-h-[52px]">
+<div class="flex items-center space-x-3">
+<input class="extra-checkbox w-5 h-5 text-primary-container rounded border-border-light focus:ring-primary-container focus:ring-offset-0" type="checkbox" value="900"/>
+<span class="text-body-md font-body-md text-text-light">Aceitunas negras rellenas</span>
+</div>
+<span class="text-label-md font-label-md text-text-secondary-light font-medium">+$900</span>
+</label>
+</div>
+</section>
+<!-- Special Kitchen Notes -->
+<section class="space-y-2">
+<label class="text-label-lg font-label-lg text-text-light flex items-center gap-1.5" for="kitchen-notes">
+<span>Notas para la cocina</span>
+<span class="text-caption font-caption text-text-secondary-light">(Opcional)</span>
+</label>
+<div class="relative">
+<textarea class="w-full rounded-xl border-border-light bg-surface-light text-text-light placeholder:text-text-secondary-light/60 text-body-sm font-body-sm p-3 focus:border-primary-container focus:ring-1 focus:ring-primary-container resize-none transition-colors" id="kitchen-notes" placeholder="Ej: Bien dorada, cortar en 8 porciones, orégano aparte..." rows="2"></textarea>
+</div>
+</section>
+</div>
+<!-- Docked Bottom Action Bar (Fixed at base of 390px viewport) -->
+<div class="absolute bottom-0 left-0 right-0 bg-surface-light/95 backdrop-blur-md border-t border-border-light px-margin-mobile py-3.5 flex items-center gap-3 z-30 shadow-[0_-4px_16px_-2px_rgba(17,17,17,0.06)]">
+<!-- Quantity Tactile Stepper (44px min target) -->
+<div class="flex items-center bg-surface-alt-light rounded-xl p-1 border border-border-light h-12 flex-shrink-0">
+<button aria-label="Disminuir cantidad" class="w-10 h-10 flex items-center justify-center text-text-light hover:text-primary-container active:scale-95 disabled:opacity-40 rounded-lg transition-transform" id="btn-decrease" type="button">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-8 text-center text-label-lg font-label-lg text-text-light" id="quantity-label">1</span>
+<button aria-label="Aumentar cantidad" class="w-10 h-10 flex items-center justify-center text-text-light hover:text-primary-container active:scale-95 rounded-lg transition-transform" id="btn-increase" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Prominent Primary Warm Orange CTA -->
+<button class="flex-1 h-12 bg-primary-container hover:bg-brand-hover active:bg-brand-pressed text-white rounded-xl font-label-lg text-label-lg flex items-center justify-between px-4 shadow-md active:scale-[0.98] transition-all duration-150" id="btn-add-to-cart" type="button">
+<span class="tracking-wide">Agregar al Pedido</span>
+<span class="font-bold tracking-tight text-white" id="final-price-tag">$14.000 ARS</span>
+</button>
+</div>
+</main>
+<!-- Interactive Logic for Real-Time Price Calculation -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let quantity = 1;
+      let baseSizePrice = 12500;
+      
+      const quantityLabel = document.getElementById('quantity-label');
+      const btnDecrease = document.getElementById('btn-decrease');
+      const btnIncrease = document.getElementById('btn-increase');
+      const finalPriceTag = document.getElementById('final-price-tag');
+      const headerPrice = document.getElementById('display-price-header');
+      const sizeInputs = document.querySelectorAll('input[name="pizza-size"]');
+      const sizeCards = document.querySelectorAll('.size-card');
+      const extraCheckboxes = document.querySelectorAll('.extra-checkbox');
+      const favBtn = document.getElementById('fav-btn');
+      const favIcon = document.getElementById('fav-icon');
+
+      function calculateTotal() {
+        let extrasTotal = 0;
+        extraCheckboxes.forEach(cb => {
+          if (cb.checked) {
+            extrasTotal += parseInt(cb.value, 10);
+          }
+        });
+
+        const unitTotal = baseSizePrice + extrasTotal;
+        const grandTotal = unitTotal * quantity;
+        
+        // Format with thousands separator for Argentina ($xx.xxx)
+        const formattedTotal = '$' + grandTotal.toLocaleString('es-AR') + ' ARS';
+        const formattedBase = '$' + baseSizePrice.toLocaleString('es-AR');
+
+        finalPriceTag.textContent = formattedTotal;
+        headerPrice.textContent = formattedBase;
+      }
+
+      // Quantity controls
+      btnIncrease.addEventListener('click', () => {
+        quantity++;
+        quantityLabel.textContent = quantity;
+        calculateTotal();
+      });
+
+      btnDecrease.addEventListener('click', () => {
+        if (quantity > 1) {
+          quantity--;
+          quantityLabel.textContent = quantity;
+          calculateTotal();
+        }
+      });
+
+      // Size selector styling & state
+      sizeInputs.forEach((input) => {
+        input.addEventListener('change', (e) => {
+          baseSizePrice = parseInt(e.target.value, 10);
+          
+          sizeCards.forEach(card => {
+            card.classList.remove('border-2', 'border-primary-container', 'bg-brand-soft', 'shadow-sm');
+            card.classList.add('border', 'border-border-light', 'bg-surface-light');
+            
+            const cardTexts = card.querySelectorAll('span');
+            if (cardTexts[0]) {
+              cardTexts[0].classList.remove('text-primary-container', 'font-bold');
+              cardTexts[0].classList.add('text-text-light');
+            }
+            if (cardTexts[2]) {
+              cardTexts[2].classList.remove('text-primary-container', 'font-bold');
+              cardTexts[2].classList.add('text-text-light');
+            }
+          });
+
+          const currentCard = e.target.closest('.size-card');
+          if (currentCard) {
+            currentCard.classList.remove('border-border-light', 'bg-surface-light');
+            currentCard.classList.add('border-2', 'border-primary-container', 'bg-brand-soft', 'shadow-sm');
+            
+            const cardTexts = currentCard.querySelectorAll('span');
+            if (cardTexts[0]) {
+              cardTexts[0].classList.add('text-primary-container', 'font-bold');
+            }
+            if (cardTexts[2]) {
+              cardTexts[2].classList.add('text-primary-container', 'font-bold');
+            }
+          }
+
+          calculateTotal();
+        });
+      });
+
+      // Extras listener
+      extraCheckboxes.forEach(cb => {
+        cb.addEventListener('change', calculateTotal);
+      });
+
+      // Favorite button toggle
+      let isFav = false;
+      favBtn.addEventListener('click', () => {
+        isFav = !isFav;
+        favIcon.textContent = isFav ? 'favorite' : 'favorite_border';
+        favIcon.style.color = isFav ? '#FF6500' : '';
+        favIcon.style.fontVariationSettings = isFav ? "'FILL' 1" : "'FILL' 0";
+      });
+
+      // Initial calculation
+      calculateTotal();
+    });
+  </script>
+</body></html>

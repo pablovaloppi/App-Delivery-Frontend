@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pizzería Napolitana Gourmet - Detalle de Comercio</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom theme config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "brand-dark": "#FF7600",
+            "on-secondary-fixed-variant": "#4a4643",
+            "primary-fixed-dim": "#ffb596",
+            "surface-soft-light": "#FFF7F2",
+            "bg-dark": "#121110",
+            "error-dark": "#F04438",
+            "secondary-container": "#e9e1dc",
+            "brand-dark-soft": "#3A2112",
+            "on-tertiary-fixed": "#1d1b18",
+            "brand-pressed": "#CC4F00",
+            "error-container": "#ffdad6",
+            "tertiary": "#615e59",
+            "error": "#ba1a1a",
+            "surface-bright": "#fff8f5",
+            "surface-soft-dark": "#211E1B",
+            "secondary-fixed-dim": "#ccc5c1",
+            "text-secondary-light": "#6B625B",
+            "tertiary-fixed-dim": "#cbc6c0",
+            "secondary-fixed": "#e9e1dc",
+            "on-error-container": "#93000a",
+            "bg-light": "#FFFDFB",
+            "brand-soft": "#FFF1E8",
+            "surface-container-lowest": "#ffffff",
+            "error-light": "#D92D20",
+            "primary": "#a33e00",
+            "surface-tint": "#a33e00",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#7d2d00",
+            "on-primary-container": "#551d00",
+            "on-surface-variant": "#5a4136",
+            "inverse-primary": "#ffb596",
+            "on-surface": "#211a15",
+            "inverse-surface": "#362f29",
+            "warning-dark": "#F59E0B",
+            "on-primary-fixed": "#360f00",
+            "text-secondary-dark": "#B9B0A8",
+            "surface-dim": "#e4d8cf",
+            "primary-container": "#ff6500",
+            "tertiary-container": "#9a9691",
+            "border-dark": "#3A342F",
+            "text-light": "#111111",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#e7e2dc",
+            "brand-hover": "#E85A00",
+            "brand-dark-pressed": "#D95E00",
+            "on-secondary-container": "#686360",
+            "on-background": "#211a15",
+            "info-light": "#3B82F6",
+            "outline-variant": "#e3bfb1",
+            "surface-container-high": "#f3e6dd",
+            "surface-container-low": "#fef1e8",
+            "brand-dark-hover": "#FF8A26",
+            "surface-alt-dark": "#28231F",
+            "secondary": "#625d5a",
+            "primary-fixed": "#ffdbcd",
+            "outline": "#8e7164",
+            "surface-light": "#FFFFFF",
+            "surface-alt-light": "#F6F0EA",
+            "surface-dark": "#191817",
+            "on-tertiary-container": "#312f2b",
+            "warning-light": "#D97706",
+            "success-dark": "#2BBE6C",
+            "surface-container": "#f9ebe2",
+            "surface-container-highest": "#ede0d7",
+            "info-dark": "#60A5FA",
+            "inverse-on-surface": "#fceee5",
+            "border-light": "#E9E2DC",
+            "surface": "#fff8f5",
+            "success-light": "#22A35A",
+            "on-primary": "#ffffff",
+            "text-dark": "#FAF8F5",
+            "background": "#fff8f5",
+            "on-tertiary-fixed-variant": "#494642",
+            "surface-variant": "#ede0d7",
+            "on-secondary-fixed": "#1e1b18",
+            "on-secondary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-2xl": "2.5rem",
+            "space-3xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-sm": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-light text-text-light font-body-md antialiased min-h-screen flex justify-center selection:bg-brand-soft selection:text-primary-container">
+<!-- Mobile Viewport Shell (390px target container) -->
+<main class="w-full max-w-[430px] min-h-screen bg-bg-light relative pb-28 shadow-xl flex flex-col">
+<!-- Hero Banner / Merchant Cover Photo Header -->
+<header class="relative w-full h-56 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An artisanal wood-fired Neapolitan pizza bubbling inside a traditional stone oven with glowing embers and golden crust. Warm ambient kitchen glow, fresh basil, Italian rustic pizzeria environment with warm oranges, rich browns, and deep black contrasts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIaC9Ao8lb0CLjdcmk1FtLb8cJxy_STRoGVzVY7VDJ7Q1diB5tdJGUeJ41KSWbxiCwcFxZBdr-nvRZMax9wxk7iMetrhFKDduwhJwfQsQpoqUFcFxAAIAi9F3BUvKMeIv4MtyyhEIzMvkuqV3J4mXiARnb0Xs6vkFuQeQZLcNAbcvDq6JEgwVp4rgotLGtz0pCQj9hhSyyGkf-AmtZRTo_x7e9tyE8CPfLVCwKX6_rRza1ABcio7MGTA"/>
+<!-- Gradient overlay for controls contrast -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/30 pointer-events-none"></div>
+<!-- Navigation & Action Controls Bar -->
+<nav aria-label="Navegación del comercio" class="absolute top-0 left-0 right-0 p-margin-mobile flex items-center justify-between z-10">
+<!-- Back Button -->
+<button aria-label="Volver a restaurantes" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur-sm shadow-md flex items-center justify-center text-text-light hover:bg-surface-light active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<!-- Right action icons (Favorite & Share) -->
+<div class="flex items-center space-x-2">
+<button aria-label="Guardar en favoritos" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur-sm shadow-md flex items-center justify-center text-text-light hover:text-primary-container active:scale-95 transition-all duration-150 focus:outline-none" id="fav-btn" type="button">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+</button>
+<button aria-label="Compartir comercio" class="w-11 h-11 rounded-full bg-surface-light/95 backdrop-blur-sm shadow-md flex items-center justify-center text-text-light hover:bg-surface-light active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Merchant Info Section -->
+<section class="relative px-margin-mobile pt-3 pb-4 bg-bg-light">
+<!-- Merchant Avatar Badge (Overlapping Cover) -->
+<div class="absolute -top-11 left-margin-mobile w-20 h-20 rounded-2xl bg-surface-light p-1 shadow-md border-2 border-surface-light overflow-hidden z-10 flex items-center justify-center">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Modern geometric food delivery logo for a gourmet Neapolitan pizzeria featuring a stylized wood oven flame and golden pizza peel. Crisp warm orange and deep espresso charcoal tones with clean minimalist badge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkyT7lLmF9ZsL-SMNaUrRVgfPAF-OPX9-ezHFrEH9oXJ_ge_PpsoJ6tgQ-Mg97tTmkRMd7FAeMHIil2b8ugt5b46USLUPhNW-tPLdmLTUsX4iQ6tBvz9jYYm5bfJFdSSnjZKAGP-zL7DL84iCgBRMd9aqDlukbbt6U30xfrLr7ZnVsYJ-IcLwv4sZPqKoCck39uOOEqXpUjqwZXOg2XfBjZv-jdSiNUwbascsVniXY5ZMDnhxF8qy_0w"/>
+</div>
+<!-- Merchant Header Row & Status Badge -->
+<div class="pt-10 flex items-start justify-between gap-2">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-text-light tracking-tight">
+            Pizzería Napolitana Gourmet
+          </h1>
+<p class="font-body-sm text-body-sm text-text-secondary-light mt-0.5">
+            Pizzas a la leña • Pastas caseras • Italiana
+          </p>
+</div>
+</div>
+<!-- Status, Ratings, Delivery & Free Shipping Pills -->
+<div class="mt-3 flex flex-wrap items-center gap-2">
+<!-- Open status badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-alt-light border border-border-light text-text-secondary-light font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-success-light"></span>
+          Abierto hasta 00:00 hs
+        </span>
+<!-- Rating Pill -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-soft-light border border-outline-variant/30 text-text-light font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-warning-light text-[15px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+<span class="font-body-sm text-body-sm text-text-secondary-light font-normal">(340+ reviews)</span>
+</span>
+<!-- ETA delivery -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-alt-light border border-border-light text-text-secondary-light font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-text-secondary-light">schedule</span>
+          20-30 min
+        </span>
+</div>
+<!-- Free shipping promotion highlight banner -->
+<div class="mt-3.5 p-3 rounded-xl bg-brand-soft border border-primary-container/20 flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">moped</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">
+              Envío Gratis
+            </p>
+<p class="font-caption text-caption text-text-secondary-light">
+              En pedidos mayores a $10.000 ARS
+            </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+</section>
+<!-- Search Input Inside Merchant -->
+<div class="px-margin-mobile pt-1 pb-2">
+<div class="relative w-full flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-text-secondary-light text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-alt-light border border-border-light text-text-light placeholder:text-text-secondary-light font-body-md text-body-md focus:bg-surface-light focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" placeholder="Buscar en Pizzería Napolitana..." type="search"/>
+</div>
+</div>
+<!-- Category Chips Tab Bar (Sticky scrollable pill navigation) -->
+<div class="sticky top-0 z-30 bg-bg-light/95 backdrop-blur-md pt-2 pb-2.5 px-margin-mobile border-b border-border-light">
+<div class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-0.5">
+<!-- Active Tab: Populares -->
+<button class="shrink-0 h-9 px-4 rounded-full bg-brand-soft text-primary-container border-1.5 border-primary-container font-label-md text-label-md font-bold transition-all shadow-sm">
+          Populares
+        </button>
+<!-- Inactive Tabs -->
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-light text-text-secondary-light border border-border-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-all active:scale-95">
+          Pizzas Individuales
+        </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-light text-text-secondary-light border border-border-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-all active:scale-95">
+          Pizzas Familiares
+        </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-light text-text-secondary-light border border-border-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-all active:scale-95">
+          Pastas Caseras
+        </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-light text-text-secondary-light border border-border-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-all active:scale-95">
+          Postres
+        </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-light text-text-secondary-light border border-border-light font-label-md text-label-md hover:bg-surface-alt-light hover:text-text-light transition-all active:scale-95">
+          Bebidas
+        </button>
+</div>
+</div>
+<!-- Main Content: Catalog Feed -->
+<div class="px-margin-mobile pt-4 space-y-5">
+<!-- Section: Destacados y Populares -->
+<section>
+<div class="flex items-center justify-between mb-3">
+<h2 class="font-headline-md text-headline-md text-text-light flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[20px] fill-icon" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+            Destacados y Populares
+          </h2>
+<span class="font-label-sm text-label-sm text-text-secondary-light">4 productos</span>
+</div>
+<div class="space-y-3">
+<!-- Product Card 1: Pizza Margherita Especial -->
+<article class="bg-surface-light border border-border-light rounded-2xl p-3.5 shadow-sm hover:shadow-md transition-shadow duration-200 flex gap-3.5 relative">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="px-1.5 py-0.5 rounded bg-brand-soft text-primary-container font-caption text-caption font-bold">Bestseller</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-text-light font-bold leading-snug">
+                  Pizza Margherita Especial
+                </h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light line-clamp-2 mt-1">
+                  Salsa pomodoro San Marzano, mozzarella fior di latte, albahaca fresca y aceite de oliva extra virgen.
+                </p>
+</div>
+<div class="flex items-center justify-between pt-2 mt-1">
+<span class="font-headline-md text-headline-md text-text-light font-extrabold tracking-tight">
+                  $12.500 <span class="font-caption text-caption text-text-secondary-light font-bold">ARS</span>
+</span>
+<!-- Circular Add Button (44px target) -->
+<button aria-label="Agregar Pizza Margherita Especial" class="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-brand-hover active:bg-brand-pressed active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</div>
+<!-- Product Image -->
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-surface-alt-light relative">
+<img class="w-full h-full object-cover" data-alt="Close up gourmet pizza Margherita with charred bubbly crust, melted buffalo mozzarella fior di latte, vibrant red tomato sauce and fresh green basil leaves on rustic parchment paper with high appetite appeal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd1M7Mg45uX3OyBsaPqtQ9tVOWvvMSAPUVGbQLIxHRg0-akEH1yjadH8cr0OYB90OEoyymUXwcqK_BHVEHoRTmt6sihAzBPV5HYZTF2OoqII2SvfFsoymfsoZwPFpJ9OTxb-gWANErGDeFESSzwyhZ8jAoj7NEsxgEg36urO8DJLfrvNxtjNHQgeRC0nKVDmhsUDfV116y0uXtdk-BSWHc4iTtEq6rr6KYYMlaziHvFhUpRa9SC_Unng"/>
+</div>
+</article>
+<!-- Product Card 2: Pizza Cuatro Quesos -->
+<article class="bg-surface-light border border-border-light rounded-2xl p-3.5 shadow-sm hover:shadow-md transition-shadow duration-200 flex gap-3.5 relative">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-title-sm text-title-sm text-text-light font-bold leading-snug">
+                  Pizza Cuatro Quesos
+                </h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light line-clamp-2 mt-1">
+                  Mozzarella fundida, gorgonzola cremoso, provolone artesanal y parmesano reggiano de 24 meses.
+                </p>
+</div>
+<div class="flex items-center justify-between pt-2 mt-1">
+<span class="font-headline-md text-headline-md text-text-light font-extrabold tracking-tight">
+                  $14.200 <span class="font-caption text-caption text-text-secondary-light font-bold">ARS</span>
+</span>
+<!-- Circular Add Button (44px target) -->
+<button aria-label="Agregar Pizza Cuatro Quesos" class="w-11 h-11 rounded-full bg-surface-alt-light text-text-light hover:bg-primary-container hover:text-on-primary active:scale-95 transition-all border border-border-light flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</div>
+<!-- Product Image -->
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-surface-alt-light relative">
+<img class="w-full h-full object-cover" data-alt="Artisanal four cheese pizza with golden brown crust, bubbly toasted gorgonzola, provolone, and parmesan cheeses garnished with micro herbs in warm restaurant lighting with appetizing steam." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUVeBlUxfnU4RJNEAUwk9JLI3YUWEXt62Ns82L3koRaWjmzPrMgoCYOlH0xSIJx0JV980XNk3JfOoNgPwZJkm6rLuffZ6bO7qx1MZl6ONG0S9D7rjjXzc7cqxnjGhagsF0ZJ-7x7Yw63M8JPcUgyQuTHjCkHcvqgCyFhtU4xAjJPEw1dnTEv1Im8vKjweT11_1DVCu94Sn8WmcRWwE4-weLjJJusimlkszvWomrJlRoC26jgTDB1E41A"/>
+</div>
+</article>
+<!-- Product Card 3: Pizza Fugazzeta Rellena -->
+<article class="bg-surface-light border border-border-light rounded-2xl p-3.5 shadow-sm hover:shadow-md transition-shadow duration-200 flex gap-3.5 relative">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-title-sm text-title-sm text-text-light font-bold leading-snug">
+                  Pizza Fugazzeta Rellena
+                </h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light line-clamp-2 mt-1">
+                  Doble masa dorada rellena con 500g de mozzarella hilada, cubierta con cebollas confitadas y orégano de montaña.
+                </p>
+</div>
+<div class="flex items-center justify-between pt-2 mt-1">
+<span class="font-headline-md text-headline-md text-text-light font-extrabold tracking-tight">
+                  $15.000 <span class="font-caption text-caption text-text-secondary-light font-bold">ARS</span>
+</span>
+<!-- Circular Add Button (44px target) -->
+<button aria-label="Agregar Pizza Fugazzeta Rellena" class="w-11 h-11 rounded-full bg-surface-alt-light text-text-light hover:bg-primary-container hover:text-on-primary active:scale-95 transition-all border border-border-light flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</div>
+<!-- Product Image -->
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-surface-alt-light relative">
+<img class="w-full h-full object-cover" data-alt="Argentine style Fugazzeta stuffed pizza with rich overflowing melted mozzarella cheese pull, topped with sweet caramelized onions and oregano sprinkles in bright foodie photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB21f8PoPqNb1UggvvkaGR5akjSMCBBoP3-mGp9PuVv9MA9Hinz3qG0tBR49vaF7EROx3UqgjVGY-JjeljorAzK9rUpRHBaPb0UDqKbGUUckY5Zvt9NqA_QMvco7AER7zoKxlXJPB2kpKJ2t0-eVDUbjJMooIUuWCEuJmZyFUZ4heJzvQMUO-_e0L4xb-JBagcCh85zr0Y1LVW5Dq2P54YOEbUhje_4XUFsdv725e9i3J-l0pee7uORUQ"/>
+</div>
+</article>
+<!-- Product Card 4: Volcán de Chocolate Tibio -->
+<article class="bg-surface-light border border-border-light rounded-2xl p-3.5 shadow-sm hover:shadow-md transition-shadow duration-200 flex gap-3.5 relative">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-alt-light text-text-secondary-light font-caption text-caption font-bold">Postre</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-text-light font-bold leading-snug">
+                  Volcán de Chocolate Tibio
+                </h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light line-clamp-2 mt-1">
+                  Bizcocho suave de chocolate belga con corazón líquido humeante, acompañado de frutos rojos frescos.
+                </p>
+</div>
+<div class="flex items-center justify-between pt-2 mt-1">
+<span class="font-headline-md text-headline-md text-text-light font-extrabold tracking-tight">
+                  $4.200 <span class="font-caption text-caption text-text-secondary-light font-bold">ARS</span>
+</span>
+<!-- Circular Add Button (44px target) -->
+<button aria-label="Agregar Volcán de Chocolate Tibio" class="w-11 h-11 rounded-full bg-surface-alt-light text-text-light hover:bg-primary-container hover:text-on-primary active:scale-95 transition-all border border-border-light flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</div>
+<!-- Product Image -->
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-surface-alt-light relative">
+<img class="w-full h-full object-cover" data-alt="Decadent molten chocolate lava cake sliced open with steaming warm liquid chocolate fudge oozing onto a white artisan plate decorated with powdered sugar and raspberries." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh78bIrYZJcS4E-Vi2hS5aerijdapPZo5doRdbKe3xCgH2T5EbI9svhRWXsiZFOXoTfTRE7YfZFYk2cSd4w4imH7EB5jC-73XoWTgnXdRW-IkHCFKVlfztPYlnazEURe68AN0Xn2PGe4SNdMEKHA1_E5cclKmK-7s3HmtAzbL2UYp4jb5MHkNf5yx8i6fMd8IxLR1fOCA7BuZQ9juR4stkNM3b7A-UXu9A2XIgNhZcJi4PxU0dlLr3wQ"/>
+</div>
+</article>
+</div>
+</section>
+<!-- Additional Section Teaser: Bebidas y Maridajes -->
+<section class="pt-2 pb-6">
+<div class="flex items-center justify-between mb-3">
+<h2 class="font-headline-md text-headline-md text-text-light">
+            Bebidas y Maridajes
+          </h2>
+<button class="font-label-sm text-label-sm text-primary-container font-bold flex items-center">
+            Ver todas <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal scroll compact cards for beverages -->
+<div class="flex space-x-3 overflow-x-auto no-scrollbar py-1">
+<div class="w-40 shrink-0 bg-surface-light border border-border-light rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+<div class="w-full h-24 rounded-lg bg-surface-alt-light overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Chilled glass bottle of classic cola drink condensation droplets ice cold refreshment on a bright minimal surface warm lighting food delivery presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD_wS9Z2MFa1GWzO3Jdb1hPDpBaR0gIYFnOhGToBJWI-IbZSMu4AYUa0-RaOYEZtaIJ2KvZWasEBfi2gDmiuoAMY-4vSMIEDOr1ETYFHvYkEV_GdNaWw8OZ1AHiswluLcvsjPFr8IWibe5hXPM6qvCvHUmEPvvTzDohNVs6Do6mmJEq8WmPB5pydlhmeIlVaaEoaNIOIKwP_BFErQTHV5W0MFI9FZxBAuK8xMpmJIpnoc1OOR7OSIw2A"/>
+</div>
+<h4 class="font-label-md text-label-md text-text-light line-clamp-1 font-bold">Coca-Cola Original</h4>
+<p class="font-caption text-caption text-text-secondary-light">Lata 354ml</p>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-border-light">
+<span class="font-label-md text-label-md text-text-light font-bold">$1.800</span>
+<button class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<div class="w-40 shrink-0 bg-surface-light border border-border-light rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+<div class="w-full h-24 rounded-lg bg-surface-alt-light overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Cold bottle of artisanal Italian craft beer with condensation, golden lager amber hues against a soft warm wooden background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKickfjK2nkVPWyNtJB5xYetnbYNGyYTeEYyzsAZqTI58HUm6WQPY7ed9BiOxBZKLo8raJGddGWdYdOhVnNzBG76xbe4Osig3XkuufxzZYSFjAaRNgtbcsHnXVwZgtfOLMluZfFOXgG7LRSTqciycjilrMOcOgv4Ag_YqdxLtBjqKAL5Unfl1y-Znd_lAaoo26JSEzczNtrgRiAG01pLv0HHwwY1Hc-f__4dvBPqQfjI5y0-2ZHwM2ag"/>
+</div>
+<h4 class="font-label-md text-label-md text-text-light line-clamp-1 font-bold">Cerveza Moretti</h4>
+<p class="font-caption text-caption text-text-secondary-light">Porrón 330ml</p>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-border-light">
+<span class="font-label-md text-label-md text-text-light font-bold">$3.200</span>
+<button class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<div class="w-40 shrink-0 bg-surface-light border border-border-light rounded-xl p-2.5 shadow-sm flex flex-col justify-between">
+<div class="w-full h-24 rounded-lg bg-surface-alt-light overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Refreshing glass tumbler with sparkling mineral water, lemon slice, and ice cubes reflecting soft studio daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-VXuecOXWbubZxVUou9IVRNb8djrgU0u55LpLob0nQj5pSTwYd80eaBUWb3t2l0pwUZocZOhPyHaB6UpWiqMq6RY9drUW1y15p9eqhwjhHDrDDTYpeyOvGMdLJ7NKJUMVxWODCS4SwLQ3EZVy_ZoUHkFGdQZTQz2J8M6jUOWbi1WiP_uUhU_iaK4xgJvpOkfkcDjkQuFIHaOv_MTp6tsYdYfJp_yhTnWZl8e-yUgWObNpRvgf3IPM_Q"/>
+</div>
+<h4 class="font-label-md text-label-md text-text-light line-clamp-1 font-bold">Agua con Gas</h4>
+<p class="font-caption text-caption text-text-secondary-light">Botella 500ml</p>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-border-light">
+<span class="font-label-md text-label-md text-text-light font-bold">$1.500</span>
+<button class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Floating Active Cart Bottom Bar (Level 2 Elevation) -->
+<!-- Note: BottomNavBar is intentionally suppressed because this is a contextual task/detail screen with back action & focused cart checkout -->
+<aside class="fixed bottom-3 left-0 right-0 max-w-[430px] mx-auto px-margin-mobile z-40">
+<div class="bg-surface-light/95 backdrop-blur-md border border-border-light p-2.5 sm:p-3 rounded-2xl shadow-[0_8px_24px_-4px_rgba(17,17,17,0.14)] flex items-center justify-between">
+<!-- Cart info & counter badge -->
+<div class="flex items-center space-x-3 pl-1">
+<div class="relative">
+<div class="w-11 h-11 rounded-xl bg-brand-soft text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+<!-- Item count badge -->
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary-container text-on-primary font-caption text-caption flex items-center justify-center font-bold shadow-sm">
+              3
+            </span>
+</div>
+<div>
+<p class="font-caption text-caption text-text-secondary-light uppercase tracking-wider font-bold">
+              3 productos
+            </p>
+<p class="font-headline-md text-headline-md text-text-light font-extrabold leading-none mt-0.5">
+              $19.500 <span class="font-caption text-caption text-text-secondary-light font-bold">ARS</span>
+</p>
+</div>
+</div>
+<!-- Primary Warm Orange CTA Button (Single Focus Rule) -->
+<button class="h-12 px-5 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg flex items-center justify-center space-x-2 hover:bg-brand-hover active:bg-brand-pressed active:scale-95 transition-all duration-150 shadow-md focus:outline-none" type="button">
+<span>Ver Carrito</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- Interactive micro-interactions (Favorite toggle) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const favBtn = document.getElementById('fav-btn');
+      if (favBtn) {
+        favBtn.addEventListener('click', () => {
+          const icon = favBtn.querySelector('.material-symbols-outlined');
+          if (icon) {
+            const isFilled = icon.classList.toggle('fill-icon');
+            if (isFilled) {
+              icon.style.fontVariationSettings = "'FILL' 1";
+              favBtn.classList.add('text-primary-container');
+            } else {
+              icon.style.fontVariationSettings = "'FILL' 0";
+              favBtn.classList.remove('text-primary-container');
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body></html>
