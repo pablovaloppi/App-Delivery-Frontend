@@ -17,6 +17,7 @@ interface AppLayoutProps {
   subtitle?: string;
   onBack?: () => void;
   hideNav?: boolean;
+  hideTopBar?: boolean;
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({
@@ -27,6 +28,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   subtitle,
   onBack,
   hideNav = false,
+  hideTopBar = false,
 }) => {
   const { role } = useAuth();
 
@@ -37,8 +39,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
         {/* Role Switcher Toolbar */}
         <RoleSwitcher />
 
-        {/* Top App Bar Header */}
-        <TopAppBar title={title} subtitle={subtitle} onBack={onBack} showLocation={!hideNav} />
+        {/* Top App Bar Header (only when not on full custom sub-page) */}
+        {!hideTopBar && (
+          <TopAppBar title={title} subtitle={subtitle} onBack={onBack} showLocation={!hideNav} />
+        )}
 
         {/* Main Content Area */}
         <main className={`flex-1 flex flex-col ${!hideNav ? 'pb-24' : 'pb-6'}`}>
