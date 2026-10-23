@@ -33,6 +33,44 @@ export interface UserProfile {
   phone?: string;
   role: UserRole;
   avatarUrl?: string;
+  merchantId?: string;
+  courierId?: string;
+}
+
+export interface PublicUser {
+  id: string;
+  role: UserRole;
+  displayName: string;
+  phone?: string;
+  email?: string;
+  photoUrl?: string;
+  cityId: string;
+  active: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  merchantId?: string;
+  courierId?: string;
+}
+
+export interface AuthSession {
+  token: string;
+  userId: string;
+  role: UserRole;
+  displayName: string;
+  email?: string;
+  phone?: string;
+  cityId: string;
+  merchantId?: string;
+  courierId?: string;
+  createdAt: string;
+  expiresAt: string;
+}
+
+export interface AuthResponse {
+  session?: AuthSession;
+  user?: PublicUser;
+  message?: string;
+  authenticated?: boolean;
 }
 
 export interface Address {

@@ -17,7 +17,7 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
   onOpenAddresses,
   onOpenPaymentMethods,
 }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { isDark, toggleTheme } = useTheme();
   const { loyaltyProfile, openLoyaltyModal } = useEcosystem();
 
@@ -250,6 +250,7 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
       <section className="pt-2 pb-4 text-center space-y-2">
         <button
           type="button"
+          onClick={() => logout()}
           className="w-full h-11 rounded-xl border border-[var(--error)]/30 bg-[var(--surface)] text-[var(--error)] hover:bg-red-50 dark:hover:bg-red-950/20 active:scale-98 transition-all flex items-center justify-center gap-2 text-xs font-bold cursor-pointer"
         >
           <span className="material-symbols-outlined text-[18px]">logout</span>

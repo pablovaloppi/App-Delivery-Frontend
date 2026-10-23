@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { useEcosystem } from '../../context/EcosystemContext';
 import { useAuth } from '../../context/AuthContext';
 import { SIMULATION_STEPS } from '../../utils/ecosystemLogic';
+import { SEED_CREDENTIALS } from '../../services/apiClient';
+import { UserRole } from '../../types';
 
 export const SimulationController: React.FC = () => {
   const {
@@ -24,20 +26,25 @@ export const SimulationController: React.FC = () => {
     simulatedOrder,
   } = useEcosystem();
 
-  const { role, setRole } = useAuth();
+  const { role, login } = useAuth();
   const [autoSwitchRole, setAutoSwitchRole] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
 
+  const switchRole = (newRole: UserRole) => {
+    const cred = SEED_CREDENTIALS.find((s) => s.role === newRole) || SEED_CREDENTIALS[0];
+    login(cred.email, cred.password, newRole);
+  };
+
   const handleAdvance = () => {
-    advanceSimulationStep(autoSwitchRole ? (newRole) => setRole(newRole) : undefined);
+    advanceSimulationStep(autoSwitchRole ? (newRole) => switchRole(newRole) : undefined);
   };
 
   const handleJump = (index: number) => {
-    jumpToSimulationStep(index, autoSwitchRole ? (newRole) => setRole(newRole) : undefined);
+    jumpToSimulationStep(index, autoSwitchRole ? (newRole) => switchRole(newRole) : undefined);
   };
 
   const handleReset = () => {
-    resetSimulation(autoSwitchRole ? (newRole) => setRole(newRole) : undefined);
+    resetSimulation(autoSwitchRole ? (newRole) => switchRole(newRole) : undefined);
   };
 
   // If simulation is closed, render an unobtrusive trigger button at the bottom right

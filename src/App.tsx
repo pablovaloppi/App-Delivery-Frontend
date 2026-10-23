@@ -29,9 +29,10 @@ import { ReviewModal } from './components/ecosystem/ReviewModal';
 import { LoyaltyRewards } from './components/ecosystem/LoyaltyRewards';
 import { NotificationCenter } from './components/ecosystem/NotificationCenter';
 import { SimulationController } from './components/ecosystem/SimulationController';
+import { LoginView } from './views/LoginView';
 
 function MainApp() {
-  const { role, activeAddress, setActiveAddress } = useAuth();
+  const { isAuthenticated, role, activeAddress, setActiveAddress } = useAuth();
   const { merchants } = useData();
   const [activeTab, setActiveTab] = useState<NavTab>('inicio');
 
@@ -40,6 +41,10 @@ function MainApp() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [trackedOrder, setTrackedOrder] = useState<OrderViewModel | null>(null);
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+
+  if (!isAuthenticated) {
+    return <LoginView />;
+  }
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
