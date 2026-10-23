@@ -6,6 +6,7 @@
 import { OrderStatus, OrderViewModel, Product } from '../../types';
 import { mockProducts } from '../../data/mockData';
 import { isValidMerchantTransition } from '../../utils/merchantLogic';
+import { apiClient } from '../apiClient';
 
 export interface StoreSettings {
   isOpen: boolean;
@@ -196,6 +197,16 @@ let inMemorySettings: StoreSettings = {
 
 export const merchantService = {
   async getOrders(): Promise<OrderViewModel[]> {
+    if (apiClient.isConfigured()) {
+      try {
+        const live = await apiClient.getOrders();
+        if (live && live.length > 0) {
+          return live;
+        }
+      } catch {
+        // fallback
+      }
+    }
     return [...inMemoryOrders];
   },
 
@@ -242,6 +253,16 @@ export const merchantService = {
   },
 
   async getProducts(): Promise<Product[]> {
+    if (apiClient.isConfigured()) {
+      try {
+        const prods = await apiClient.getMerchantProducts('m_001');
+        if (prods && prods.length > 0) {
+          return prods;
+        }
+      } catch {
+        // fallback
+      }
+    }
     return [...inMemoryProducts];
   },
 

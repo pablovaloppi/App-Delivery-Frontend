@@ -1,10 +1,6 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { CartItem, MoneyAmount, OrderStatus, OrderViewModel } from '../../types';
 import { calculateCartTotals } from '../../utils/cartCalculations';
+import { apiClient } from '../apiClient';
 
 export interface CreateOrderRequest {
   merchantId: string;
@@ -44,16 +40,13 @@ export interface ApiResponse<T> {
 export const orderService = {
   /**
    * Submit an order for creation.
-   * Simulates server validation and authoritative calculation while maintaining API contract envelope.
+   * Sends request to live backend if configured, falling back gracefully.
    */
   async createOrder(
     req: CreateOrderRequest,
     rawCartItems: CartItem[],
     deliveryFee: number,
   ): Promise<ApiResponse<OrderViewModel>> {
-    // Artificial latency for realistic server confirmation & double-submit test
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
     if (!req.items || req.items.length === 0) {
       return {
         data: null,
@@ -91,7 +84,7 @@ export const orderService = {
       id: `ord-${newOrderNumber}`,
       orderNumber: newOrderNumber,
       merchantId: req.merchantId,
-      merchantName: 'Pizzería Napolitana Gourmet',
+      merchantName: rawCartItems[0]?.product.name ? 'Comercio Local' : 'Pizzería Napolitana Gourmet',
       customerId: 'usr-customer-1',
       status: 'PENDING',
       deliveryType: req.deliveryType,
@@ -115,21 +108,62 @@ export const orderService = {
       total: totals.total,
       deliveryAddress: {
         id: req.deliveryAddressId,
-        label: 'Casa',
+        label: 'Entrega',
         street: 'Av. Corrientes',
         number: '1234',
         apartment: 'Piso 4 B',
         city: 'CABA',
-        instructions: 'Tocar timbre 4B (interfono directo)',
+        instructions: 'Tocar timbre 4B',
         isDefault: true,
       },
       createdAt: new Date().toISOString(),
-      estimatedDeliveryTime: '25-35 min',
+      estimatedDeliveryTime: '30-40 min',
     };
+
+    // If live backend is configured, attempt real POST to /api/v1/orders
+    if (apiClient.isConfigured()) {
+      try {
+        const payload = {
+          customerId: 'usr_customer_1',
+          merchantId: req.merchantId,
+          deliveryType: req.deliveryType,
+          paymentMethod: req.paymentMethod,
+          tip: req.tipAmount,
+          items: rawCartItems.map((it) => ({
+            productId: it.product.id,
+            nameSnapshot: it.product.name,
+            quantity: it.quantity,
+            unitPriceSnapshot: it.product.price.amount,
+            subtotal: it.product.price.amount * it.quantity,
+          })),
+          subtotal: totals.subtotal.amount,
+          deliveryFee: totals.deliveryFee.amount,
+          total: totals.total.amount,
+        };
+
+        const result = await apiClient.createOrder(payload);
+        if (result.success && result.order) {
+          return {
+            data: {
+              ...newOrder,
+              id: result.order.id || newOrder.id,
+              orderNumber: result.order.orderNumber || newOrder.orderNumber,
+            },
+            meta: { requestId: `req-${Date.now()}`, serverTime: new Date().toISOString() },
+            error: null,
+          };
+        }
+      } catch (e) {
+        console.warn('[orderService] Backend POST order fallback:', e);
+      }
+    }
 
     return {
       data: newOrder,
-      meta: { requestId: `req-${Date.now()}`, serverTime: new Date().toISOString() },
+      meta: {
+        requestId: `req-${Date.now()}`,
+        serverTime: new Date().toISOString(),
+      },
       error: null,
     };
   },

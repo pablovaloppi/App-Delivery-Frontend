@@ -7,19 +7,21 @@ import React, { useState } from 'react';
 import { SearchBar } from '../components/ui/SearchBar';
 import { CategoryChip } from '../components/ui/CategoryChip';
 import { MerchantCard } from '../components/ui/MerchantCard';
-import { mockCategories, mockMerchants } from '../data/mockData';
+import { mockCategories } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 interface CustomerExploreViewProps {
   onSelectMerchant?: (merchantId: string) => void;
 }
 
 export const CustomerExploreView: React.FC<CustomerExploreViewProps> = ({ onSelectMerchant }) => {
+  const { merchants } = useData();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'open' | 'freeDelivery' | 'rating'>(
     'all',
   );
 
-  const filteredMerchants = mockMerchants.filter((m) => {
+  const filteredMerchants = merchants.filter((m) => {
     if (selectedFilter === 'open' && !m.isOpen) return false;
     if (selectedFilter === 'freeDelivery' && !m.freeDeliveryThreshold && m.deliveryFee.amount > 0)
       return false;

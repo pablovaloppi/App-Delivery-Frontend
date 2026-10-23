@@ -8,8 +8,9 @@ import { SearchBar } from '../components/ui/SearchBar';
 import { CategoryChip } from '../components/ui/CategoryChip';
 import { MerchantCard } from '../components/ui/MerchantCard';
 import { AdLabel } from '../components/ui/AdLabel';
-import { mockCategories, mockMerchants } from '../data/mockData';
+import { mockCategories } from '../data/mockData';
 import { formatMoney } from '../utils/formatters';
+import { useData } from '../context/DataContext';
 
 interface CustomerHomeViewProps {
   onSelectMerchant?: (merchantId: string) => void;
@@ -20,10 +21,11 @@ export const CustomerHomeView: React.FC<CustomerHomeViewProps> = ({
   onSelectMerchant,
   onNavigateToTab,
 }) => {
+  const { merchants, backendHealth, isLiveBackend, refreshMerchants } = useData();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('cat-1');
 
-  const filteredMerchants = mockMerchants.filter((m) => {
+  const filteredMerchants = merchants.filter((m) => {
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return (
@@ -42,6 +44,26 @@ export const CustomerHomeView: React.FC<CustomerHomeViewProps> = ({
         placeholder="¿Qué estás buscando hoy? Platos, locales..."
         onFilterClick={() => {}}
       />
+
+      {/* Backend Tunnel Connection Status Pill */}
+      {isLiveBackend && (
+        <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[11px] text-emerald-700 dark:text-emerald-400">
+          <div className="flex items-center gap-1.5 truncate">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="font-bold truncate">Backend Docker Conectado:</span>
+            <span className="font-mono text-[10px] opacity-85 truncate">
+              {backendHealth.service || 'Marketplace Delivery API'}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => refreshMerchants()}
+            className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 underline hover:no-underline shrink-0 ml-2 cursor-pointer"
+          >
+            Actualizar datos
+          </button>
+        </div>
+      )}
 
       {/* Hero Promotional Banner (50% OFF Card) */}
       <section className="relative w-full rounded-2xl overflow-hidden bg-[#241712] text-white shadow-md">

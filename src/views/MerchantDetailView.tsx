@@ -12,6 +12,7 @@ import { mockProducts, mockActiveOrder } from '../data/mockData';
 import { formatMoney } from '../utils/formatters';
 import { useEcosystem } from '../context/EcosystemContext';
 import { aggregateReviewStats } from '../utils/ecosystemLogic';
+import { useData } from '../context/DataContext';
 
 interface MerchantDetailViewProps {
   merchant: Merchant;
@@ -26,11 +27,25 @@ export const MerchantDetailView: React.FC<MerchantDetailViewProps> = ({
 }) => {
   const { items, addItem, totals } = useCart();
   const { reviews, openReviewModal } = useEcosystem();
+  const { fetchProductsByMerchantId } = useData();
+  const [products, setProducts] = useState<Product[]>(mockProducts);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [internalSearch, setInternalSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('Populares');
   const [isFavorite, setIsFavorite] = useState(false);
+
+  React.useEffect(() => {
+    let isCurrent = true;
+    fetchProductsByMerchantId(merchant.id).then((data) => {
+      if (isCurrent && data && data.length > 0) {
+        setProducts(data);
+      }
+    });
+    return () => {
+      isCurrent = false;
+    };
+  }, [merchant.id, fetchProductsByMerchantId]);
 
   const categories = [
     'Populares',
@@ -46,7 +61,7 @@ export const MerchantDetailView: React.FC<MerchantDetailViewProps> = ({
     setIsModalOpen(true);
   };
 
-  const filteredProducts = mockProducts.filter((p) => {
+  const filteredProducts = products.filter((p) => {
     if (!internalSearch) return true;
     return (
       p.name.toLowerCase().includes(internalSearch.toLowerCase()) ||

@@ -24,6 +24,7 @@ import { AdminOverviewView } from './views/AdminOverviewView';
 import { mockMerchants, mockActiveOrder } from './data/mockData';
 import { Merchant, OrderViewModel } from './types';
 import { EcosystemProvider } from './context/EcosystemContext';
+import { DataProvider, useData } from './context/DataContext';
 import { ReviewModal } from './components/ecosystem/ReviewModal';
 import { LoyaltyRewards } from './components/ecosystem/LoyaltyRewards';
 import { NotificationCenter } from './components/ecosystem/NotificationCenter';
@@ -31,6 +32,7 @@ import { SimulationController } from './components/ecosystem/SimulationControlle
 
 function MainApp() {
   const { role, activeAddress, setActiveAddress } = useAuth();
+  const { merchants } = useData();
   const [activeTab, setActiveTab] = useState<NavTab>('inicio');
 
   // Customer sub-view navigation states
@@ -44,7 +46,7 @@ function MainApp() {
   }, [selectedMerchant, isCheckoutOpen, trackedOrder]);
 
   const handleSelectMerchantId = (merchantId: string) => {
-    const found = mockMerchants.find((m) => m.id === merchantId) || mockMerchants[0];
+    const found = merchants.find((m) => m.id === merchantId) || mockMerchants.find((m) => m.id === merchantId) || merchants[0] || mockMerchants[0];
     setSelectedMerchant(found);
   };
 
@@ -192,11 +194,13 @@ export default function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <CartProvider>
-          <EcosystemProvider>
-            <MainApp />
-          </EcosystemProvider>
-        </CartProvider>
+        <DataProvider>
+          <CartProvider>
+            <EcosystemProvider>
+              <MainApp />
+            </EcosystemProvider>
+          </CartProvider>
+        </DataProvider>
       </AuthProvider>
     </ThemeProvider>
   );
