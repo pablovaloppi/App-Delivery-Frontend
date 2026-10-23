@@ -26,15 +26,16 @@ export function calculateCartItemPrice(
 }
 
 export function calculateCartTotals(
-  items: CartItem[],
-  deliveryFeeAmount: number,
-  freeDeliveryThresholdAmount: number | undefined,
-  tipAmount: number,
+  items: CartItem[] = [],
+  deliveryFeeAmount: number = 0,
+  freeDeliveryThresholdAmount: number | undefined = undefined,
+  tipAmount: number = 0,
   couponDiscountAmount: number = 0,
 ): CartCalculationResult {
-  const itemsCount = items.reduce((acc, item) => acc + item.quantity, 0);
+  const validItems = (items || []).filter((it) => Boolean(it && it.product));
+  const itemsCount = validItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
-  const subtotalAmount = items.reduce((acc, item) => {
+  const subtotalAmount = validItems.reduce((acc, item) => {
     let sizeAdj = 0;
     if (item.selectedOptions?.size === 'Chica') sizeAdj = 9800;
     else if (item.selectedOptions?.size === 'Mediana') sizeAdj = 12500;
@@ -48,11 +49,19 @@ export function calculateCartTotals(
       return 0;
     });
 
+    const rawPrice = item.product?.price;
+    const basePrice =
+      typeof rawPrice === 'number'
+        ? rawPrice
+        : typeof rawPrice?.amount === 'number'
+        ? rawPrice.amount
+        : 10000;
+
     const itemPrice = calculateCartItemPrice(
-      item.product.price.amount,
+      basePrice,
       sizeAdj,
       extrasPrices,
-      item.quantity,
+      item.quantity || 1,
     );
     return acc + itemPrice;
   }, 0);

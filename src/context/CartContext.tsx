@@ -34,25 +34,23 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Initial default seed items matching Stitch screen_49e21d12.png
-const initialSeedItems: CartItem[] = [
-  {
-    product: mockProducts[0], // Pizza Margherita Especial
-    quantity: 1,
-    selectedOptions: {
-      size: 'Mediana',
-      extras: ['Extra Queso Mozzarella (+$1.500 ARS)'],
-    },
-  },
-  {
-    product: mockProducts[4], // Coca Cola 1.5L
-    quantity: 1,
-  },
-  {
-    product: mockProducts[3], // Volcán de Chocolate
-    quantity: 1,
-  },
-];
+// Initial default seed items
+const initialSeedItems: CartItem[] = mockProducts[0]
+  ? [
+      {
+        product: mockProducts[0],
+        quantity: 1,
+        selectedOptions: {
+          size: 'Mediana',
+          extras: ['Extra Queso Mozzarella (+$1.500 ARS)'],
+        },
+      },
+      {
+        product: mockProducts[1] || mockProducts[0],
+        quantity: 1,
+      },
+    ]
+  : [];
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [merchant, setMerchant] = useState<Merchant | null>(mockMerchants[0]);

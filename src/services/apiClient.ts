@@ -7,7 +7,9 @@ import { Merchant, MoneyAmount, OrderStatus, OrderViewModel, Product } from '../
 import { mockCategories, mockMerchants, mockProducts, mockActiveOrder } from '../data/mockData';
 
 // Normalized Base URL from environment variable VITE_API_BASE_URL
-const RAW_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) || '';
+const RAW_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined) ||
+  'https://arthritis-older-polyester-manually.trycloudflare.com';
 export const API_BASE_URL = RAW_BASE_URL.trim().replace(/\/+$/, '');
 
 console.info(`[FoodieLocal API] Configured Base URL: "${API_BASE_URL || '(using local fallback)'}"`);
