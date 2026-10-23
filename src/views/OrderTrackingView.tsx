@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { OrderViewModel } from '../types';
 import { formatMoney } from '../utils/formatters';
+import { useEcosystem } from '../context/EcosystemContext';
 
 interface OrderTrackingViewProps {
   order: OrderViewModel;
@@ -14,6 +15,7 @@ interface OrderTrackingViewProps {
 
 export const OrderTrackingView: React.FC<OrderTrackingViewProps> = ({ order, onBack }) => {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const { openReviewModal } = useEcosystem();
 
   return (
     <div className="flex-1 flex flex-col relative select-none pb-8 bg-[var(--bg)]">
@@ -263,6 +265,42 @@ export const OrderTrackingView: React.FC<OrderTrackingViewProps> = ({ order, onB
                 className="w-11 h-11 flex items-center justify-center rounded-full bg-[var(--brand)] text-white active:scale-95 hover:bg-[var(--brand-hover)] transition-all shadow-sm cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">call</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Etapa 6: Calificación Dual & Recompensa Porteña */}
+          <div className="p-3 bg-gradient-to-r from-amber-500/10 via-[var(--brand-soft)] to-amber-500/10 rounded-2xl border border-amber-500/30 flex items-center justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <span className="material-symbols-outlined text-[20px]">rate_review</span>
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold text-[var(--text)]">Calificar Experiencia</h4>
+                  <span className="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-700 dark:text-amber-300 text-[9px] font-black">
+                    +50 Puntos
+                  </span>
+                </div>
+                <p className="text-[11px] text-[var(--text-secondary)] truncate">
+                  Calificá la comida de la pizzería y la entrega de Carlos
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => openReviewModal(order, 'merchant')}
+                className="py-1.5 px-2.5 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border)] text-[11px] font-bold text-[var(--text)] shadow-xs transition-all cursor-pointer"
+              >
+                Comida
+              </button>
+              <button
+                type="button"
+                onClick={() => openReviewModal(order, 'courier')}
+                className="py-1.5 px-2.5 rounded-xl bg-[var(--brand)] hover:bg-[var(--brand-hover)] text-white text-[11px] font-bold shadow-xs transition-all cursor-pointer"
+              >
+                Cadete
               </button>
             </div>
           </div>

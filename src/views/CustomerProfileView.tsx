@@ -6,6 +6,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { useEcosystem } from '../context/EcosystemContext';
 
 interface CustomerProfileViewProps {
   onOpenAddresses?: () => void;
@@ -18,6 +19,7 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
 }) => {
   const { user } = useAuth();
   const { isDark, toggleTheme } = useTheme();
+  const { loyaltyProfile, openLoyaltyModal } = useEcosystem();
 
   return (
     <div className="flex-1 flex flex-col space-y-4 px-4 pt-3 pb-4">
@@ -52,12 +54,19 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
             <p className="text-xs text-[var(--text-secondary)] truncate mt-0.5">{user.email}</p>
             <p className="text-[10px] text-[var(--text-secondary)] mt-0.5">{user.phone}</p>
 
-            <div className="mt-2 inline-flex items-center gap-1 bg-[var(--brand-soft)] text-[var(--brand)] px-2.5 py-0.5 rounded-full border border-[var(--brand)]/20">
-              <span className="material-symbols-outlined text-[12px] fill-icon">
+            <button
+              type="button"
+              onClick={openLoyaltyModal}
+              className="mt-2 inline-flex items-center gap-1.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full border border-amber-500/30 hover:bg-amber-500/25 transition-colors cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[14px] fill-icon">
                 workspace_premium
               </span>
-              <span className="text-[10px] font-bold">Cliente Plus • Nivel Oro (24 pedidos)</span>
-            </div>
+              <span className="text-[10px] font-black">
+                {loyaltyProfile.currentTier === 'VECINO_HABITUAL' ? 'Vecino Habitual' : 'Vecino Notable'} • {loyaltyProfile.totalPoints} pts
+              </span>
+              <span className="material-symbols-outlined text-[12px]">chevron_right</span>
+            </button>
           </div>
         </div>
 
@@ -77,9 +86,40 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
             <span className="text-[10px] text-[var(--text-secondary)]">Reputación</span>
           </div>
           <div className="px-1">
-            <span className="block text-base font-extrabold text-[var(--brand)]">$4.800</span>
-            <span className="text-[10px] text-[var(--text-secondary)]">Ahorro cupones</span>
+            <span className="block text-base font-extrabold text-amber-600 dark:text-amber-400">
+              {loyaltyProfile.totalPoints}
+            </span>
+            <span className="text-[10px] text-[var(--text-secondary)]">Puntos Porteños</span>
           </div>
+        </div>
+      </section>
+
+      {/* Etapa 6: Comunidad Porteña Club CTA Card */}
+      <section
+        onClick={openLoyaltyModal}
+        className="bg-gradient-to-r from-amber-600/10 via-[var(--surface)] to-amber-600/10 rounded-2xl p-4 border border-amber-500/30 shadow-xs flex items-center justify-between gap-3 cursor-pointer hover:border-amber-500/60 transition-all group"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+            <span className="material-symbols-outlined text-[24px]">workspace_premium</span>
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h3 className="font-bold text-sm text-[var(--text)]">Club Comunidad Porteña</h3>
+              <span className="px-2 py-0.5 rounded-full bg-amber-500 text-white text-[9px] font-black uppercase">
+                Activo
+              </span>
+            </div>
+            <p className="text-xs text-[var(--text-secondary)] mt-0.5 truncate">
+              {loyaltyProfile.unlockedBadges.filter((b) => b.unlocked).length} insignias • Envíos bonificados y cupones
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400 shrink-0">
+          <span>Ver Club</span>
+          <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">
+            arrow_forward
+          </span>
         </div>
       </section>
 

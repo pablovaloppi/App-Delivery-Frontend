@@ -6,6 +6,7 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useEcosystem } from '../../context/EcosystemContext';
 
 interface TopAppBarProps {
   title?: string;
@@ -20,8 +21,9 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   onBack,
   showLocation = true,
 }) => {
-  const { activeAddress, notificationsCount, role } = useAuth();
+  const { activeAddress, role } = useAuth();
   const { isDark, toggleTheme } = useTheme();
+  const { unreadCount, openNotificationCenter, loyaltyProfile, openLoyaltyModal } = useEcosystem();
 
   return (
     <header className="sticky top-0 z-40 bg-[var(--surface)]/95 backdrop-blur-md shadow-sm border-b border-[var(--border)] transition-colors">
@@ -62,15 +64,28 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
           </div>
         )}
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+          {/* Customer Loyalty Points Button */}
+          {role === 'customer' && (
+            <button
+              type="button"
+              onClick={openLoyaltyModal}
+              title="Club Comunidad Porteña"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-500/30 text-xs font-black transition-all cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[15px] fill-icon">toll</span>
+              <span>{loyaltyProfile.totalPoints} pts</span>
+            </button>
+          )}
+
           {/* Theme Switcher */}
           <button
             type="button"
             onClick={toggleTheme}
             aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--surface-alt)] active:scale-95 transition-all text-[var(--text-secondary)] hover:text-[var(--text)] cursor-pointer"
+            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[var(--surface-alt)] active:scale-95 transition-all text-[var(--text-secondary)] hover:text-[var(--text)] cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[20px]">
+            <span className="material-symbols-outlined text-[19px]">
               {isDark ? 'light_mode' : 'dark_mode'}
             </span>
           </button>
@@ -78,12 +93,15 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
           {/* Notifications */}
           <button
             type="button"
-            aria-label="Notificaciones"
-            className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--surface-alt)] active:scale-95 transition-all text-[var(--text-secondary)] hover:text-[var(--text)] cursor-pointer"
+            onClick={openNotificationCenter}
+            aria-label="Abrir centro de avisos"
+            className="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-[var(--surface-alt)] active:scale-95 transition-all text-[var(--text-secondary)] hover:text-[var(--text)] cursor-pointer"
           >
             <span className="material-symbols-outlined text-[20px]">notifications</span>
-            {notificationsCount > 0 && (
-              <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[var(--brand)] ring-2 ring-[var(--surface)]" />
+            {unreadCount > 0 && (
+              <span className="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[var(--brand)] text-white text-[9px] font-black flex items-center justify-center ring-2 ring-[var(--surface)]">
+                {unreadCount > 9 ? '9+' : unreadCount}
+              </span>
             )}
           </button>
         </div>

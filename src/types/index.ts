@@ -137,3 +137,5 @@ export interface CourierOfferVM {
   expiresAt: string; // ISO string
   secondsRemaining: number;
 }
+
+export * from './ecosystem';

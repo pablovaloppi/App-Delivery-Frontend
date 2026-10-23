@@ -23,6 +23,11 @@ import { CourierOverviewView } from './views/CourierOverviewView';
 import { AdminOverviewView } from './views/AdminOverviewView';
 import { mockMerchants, mockActiveOrder } from './data/mockData';
 import { Merchant, OrderViewModel } from './types';
+import { EcosystemProvider } from './context/EcosystemContext';
+import { ReviewModal } from './components/ecosystem/ReviewModal';
+import { LoyaltyRewards } from './components/ecosystem/LoyaltyRewards';
+import { NotificationCenter } from './components/ecosystem/NotificationCenter';
+import { SimulationController } from './components/ecosystem/SimulationController';
 
 function MainApp() {
   const { role, activeAddress, setActiveAddress } = useAuth();
@@ -173,6 +178,12 @@ function MainApp() {
         activeAddress={activeAddress}
         onSelectAddress={setActiveAddress}
       />
+
+      {/* Etapa 6 Ecosystem Modals & Overlays */}
+      <ReviewModal />
+      <LoyaltyRewards />
+      <NotificationCenter />
+      <SimulationController />
     </>
   );
 }
@@ -182,7 +193,9 @@ export default function App() {
     <ThemeProvider>
       <AuthProvider>
         <CartProvider>
-          <MainApp />
+          <EcosystemProvider>
+            <MainApp />
+          </EcosystemProvider>
         </CartProvider>
       </AuthProvider>
     </ThemeProvider>

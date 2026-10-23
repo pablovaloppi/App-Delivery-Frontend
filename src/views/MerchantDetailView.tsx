@@ -8,8 +8,10 @@ import { Merchant, Product } from '../types';
 import { ProductCard } from '../components/ui/ProductCard';
 import { ProductDetailModal } from './ProductDetailModal';
 import { useCart } from '../context/CartContext';
-import { mockProducts } from '../data/mockData';
+import { mockProducts, mockActiveOrder } from '../data/mockData';
 import { formatMoney } from '../utils/formatters';
+import { useEcosystem } from '../context/EcosystemContext';
+import { aggregateReviewStats } from '../utils/ecosystemLogic';
 
 interface MerchantDetailViewProps {
   merchant: Merchant;
@@ -23,6 +25,7 @@ export const MerchantDetailView: React.FC<MerchantDetailViewProps> = ({
   onOpenCart,
 }) => {
   const { items, addItem, totals } = useCart();
+  const { reviews, openReviewModal } = useEcosystem();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [internalSearch, setInternalSearch] = useState('');
@@ -276,6 +279,158 @@ export const MerchantDetailView: React.FC<MerchantDetailViewProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Etapa 6: Reseñas & Calificaciones de la Comunidad Porteña */}
+        <section className="mt-6 pt-5 border-t border-[var(--border)] space-y-3">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[18px] text-amber-500 fill-icon">
+                  star
+                </span>
+                <h3 className="font-bold text-sm text-[var(--text)]">
+                  Opiniones de la Comunidad
+                </h3>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)]">
+                Calificaciones 100% verificadas de clientes de CABA
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                openReviewModal(
+                  {
+                    ...mockActiveOrder,
+                    merchantId: merchant.id,
+                    merchantName: merchant.name,
+                  },
+                  'merchant'
+                )
+              }
+              className="py-1.5 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center gap-1 transition-all cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[15px]">rate_review</span>
+              <span>Calificar (+50 pts)</span>
+            </button>
+          </div>
+
+          {/* Aggregate Stats Card */}
+          {(() => {
+            const merchantReviews = reviews.filter((r) => r.targetType === 'merchant');
+            const stats = aggregateReviewStats(merchantReviews);
+            return (
+              <div className="p-3.5 bg-[var(--surface-alt)]/60 rounded-2xl border border-[var(--border)] space-y-3">
+                <div className="flex items-center gap-4">
+                  <div className="text-center px-2">
+                    <span className="text-2xl font-black text-[var(--text)] block leading-none">
+                      {stats.averageRating}
+                    </span>
+                    <div className="flex items-center justify-center gap-0.5 text-amber-400 mt-1">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <span
+                          key={s}
+                          className={`material-symbols-outlined text-[13px] ${
+                            s <= Math.round(stats.averageRating) ? 'fill-icon' : 'opacity-30'
+                          }`}
+                        >
+                          star
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-[9px] text-[var(--text-secondary)] block mt-0.5">
+                      {stats.totalCount} reseñas
+                    </span>
+                  </div>
+
+                  <div className="flex-1 space-y-1">
+                    {[5, 4, 3, 2, 1].map((stars) => {
+                      const count = stats.ratingDistribution[stars] || 0;
+                      const pct = stats.totalCount > 0 ? (count / stats.totalCount) * 100 : 0;
+                      return (
+                        <div key={stars} className="flex items-center gap-1.5 text-[10px]">
+                          <span className="w-2.5 font-bold text-[var(--text-secondary)]">{stars}</span>
+                          <div className="flex-1 bg-[var(--border)]/70 h-1 rounded-full overflow-hidden">
+                            <div
+                              className="bg-amber-400 h-full rounded-full"
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                          <span className="w-4 text-right text-[var(--text-secondary)]">{count}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Top Tags */}
+                {stats.topTags.length > 0 && (
+                  <div className="flex flex-wrap gap-1 pt-2 border-t border-[var(--border)]">
+                    {stats.topTags.map((t) => (
+                      <span
+                        key={t.tag}
+                        className="px-2 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[10px] font-medium text-[var(--text-secondary)]"
+                      >
+                        ✓ {t.tag} ({t.count})
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* Reviews Stream */}
+          <div className="space-y-2">
+            {reviews
+              .filter((r) => r.targetType === 'merchant')
+              .slice(0, 3)
+              .map((r) => (
+                <div
+                  key={r.id}
+                  className="p-3 bg-[var(--surface)] rounded-xl border border-[var(--border)] space-y-1.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center font-bold text-[10px]">
+                        {r.authorName[0]}
+                      </div>
+                      <span className="font-bold text-xs text-[var(--text)]">{r.authorName}</span>
+                    </div>
+                    <div className="flex items-center gap-0.5 text-amber-400">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <span
+                          key={s}
+                          className={`material-symbols-outlined text-[13px] ${
+                            s <= r.rating ? 'fill-icon' : 'opacity-30'
+                          }`}
+                        >
+                          star
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  {r.comment && (
+                    <p className="text-xs text-[var(--text)] leading-relaxed italic">
+                      "{r.comment}"
+                    </p>
+                  )}
+                  {r.tags && r.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1 pt-1">
+                      {r.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="px-1.5 py-0.2 rounded bg-[var(--surface-alt)] text-[9px] font-medium text-[var(--text-secondary)]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </section>
       </div>

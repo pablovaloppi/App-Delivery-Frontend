@@ -5,9 +5,12 @@
 
 import React, { useState } from 'react';
 import { formatMoney } from '../utils/formatters';
+import { useEcosystem } from '../context/EcosystemContext';
+import { mockActiveOrder } from '../data/mockData';
 
 export const CustomerOrdersView: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'current' | 'history'>('current');
+  const { openReviewModal } = useEcosystem();
 
   return (
     <div className="flex-1 flex flex-col space-y-4 px-4 pt-3">
@@ -173,12 +176,13 @@ export const CustomerOrdersView: React.FC = () => {
             <div className="flex items-center gap-2">
               <button
                 type="button"
+                onClick={() => openReviewModal({ ...mockActiveOrder, orderNumber: 1038, id: 'ord-1038' }, 'merchant')}
                 className="h-9 px-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-alt)] text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[16px] text-amber-500 fill-icon">
                   star
                 </span>
-                <span>Valorar</span>
+                <span>Valorar (+50 pts)</span>
               </button>
               <button
                 type="button"
