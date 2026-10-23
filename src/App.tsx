@@ -30,9 +30,10 @@ import { LoyaltyRewards } from './components/ecosystem/LoyaltyRewards';
 import { NotificationCenter } from './components/ecosystem/NotificationCenter';
 import { SimulationController } from './components/ecosystem/SimulationController';
 import { LoginView } from './views/LoginView';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 function MainApp() {
-  const { isAuthenticated, role, activeAddress, setActiveAddress } = useAuth();
+  const { isAuthenticated, role, user, activeAddress, setActiveAddress } = useAuth();
   const { merchants } = useData();
   const [activeTab, setActiveTab] = useState<NavTab>('inicio');
 
@@ -42,13 +43,23 @@ function MainApp() {
   const [trackedOrder, setTrackedOrder] = useState<OrderViewModel | null>(null);
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
-  if (!isAuthenticated) {
-    return <LoginView />;
-  }
-
+  // 1. Always call all hooks BEFORE any conditional return
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedMerchant, isCheckoutOpen, trackedOrder]);
+
+  // 2. Reset navigation states when user or auth state changes
+  React.useEffect(() => {
+    setSelectedMerchant(null);
+    setIsCheckoutOpen(false);
+    setTrackedOrder(null);
+    setActiveTab('inicio');
+  }, [user?.id, isAuthenticated, role]);
+
+  // 3. Early return AFTER all hooks are unconditionally declared
+  if (!isAuthenticated) {
+    return <LoginView />;
+  }
 
   const handleSelectMerchantId = (merchantId: string) => {
     const found = merchants.find((m) => m.id === merchantId) || mockMerchants.find((m) => m.id === merchantId) || merchants[0] || mockMerchants[0];
@@ -197,16 +208,18 @@ function MainApp() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <DataProvider>
-          <CartProvider>
-            <EcosystemProvider>
-              <MainApp />
-            </EcosystemProvider>
-          </CartProvider>
-        </DataProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AuthProvider>
+          <DataProvider>
+            <CartProvider>
+              <EcosystemProvider>
+                <MainApp />
+              </EcosystemProvider>
+            </CartProvider>
+          </DataProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
