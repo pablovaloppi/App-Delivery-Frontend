@@ -195,6 +195,9 @@ let inMemorySettings: StoreSettings = {
   autoAcceptOrders: false,
 };
 
+// Status override map to preserve status transitions made in frontend UI
+const statusOverrides: Map<string, OrderStatus> = new Map();
+
 export const merchantService = {
   async getOrders(): Promise<OrderViewModel[]> {
     if (apiClient.isConfigured()) {
@@ -203,13 +206,22 @@ export const merchantService = {
         if (live && live.length > 0) {
           const liveIds = new Set(live.map((o) => o.id));
           const unsynced = inMemoryOrders.filter((o) => !liveIds.has(o.id));
-          return [...unsynced, ...live];
+
+          // Apply status overrides to live orders
+          const mergedLive = live.map((o) => {
+            if (statusOverrides.has(o.id)) {
+              return { ...o, status: statusOverrides.get(o.id)! };
+            }
+            return o;
+          });
+
+          return [...unsynced, ...mergedLive];
         }
       } catch {
         // fallback
       }
     }
-    return [...inMemoryOrders];
+    return inMemoryOrders.map((o) => (statusOverrides.has(o.id) ? { ...o, status: statusOverrides.get(o.id)! } : o));
   },
 
   async addOrder(newOrder: OrderViewModel): Promise<void> {
@@ -217,12 +229,19 @@ export const merchantService = {
     if (!exists) {
       inMemoryOrders = [newOrder, ...inMemoryOrders];
     }
+    if (newOrder.status) {
+      statusOverrides.set(newOrder.id, newOrder.status);
+    }
   },
 
   async updateOrderStatus(
     orderId: string,
     targetStatus: OrderStatus,
   ): Promise<{ success: boolean; error?: string; order?: OrderViewModel }> {
+    // 1. Record override
+    statusOverrides.set(orderId, targetStatus);
+
+    // 2. Update in-memory orders
     const orderIndex = inMemoryOrders.findIndex((o) => o.id === orderId);
     if (orderIndex !== -1) {
       const currentStatus = inMemoryOrders[orderIndex].status;
@@ -239,17 +258,24 @@ export const merchantService = {
       };
     }
 
+    // 3. Attempt API update on live backend
     if (apiClient.isConfigured()) {
-      await apiClient.updateOrderStatus(orderId, targetStatus);
+      try {
+        await apiClient.updateOrderStatus(orderId, targetStatus);
+      } catch (err) {
+        console.warn('[merchantService] API status sync warning:', err);
+      }
     }
 
-    return { success: true, order: inMemoryOrders[orderIndex] };
+    const updatedOrder = inMemoryOrders[orderIndex] || { id: orderId, status: targetStatus };
+    return { success: true, order: updatedOrder as OrderViewModel };
   },
 
   async rejectOrder(
     orderId: string,
     reason: string,
   ): Promise<{ success: boolean; error?: string }> {
+    statusOverrides.set(orderId, 'REJECTED');
     const orderIndex = inMemoryOrders.findIndex((o) => o.id === orderId);
     if (orderIndex !== -1) {
       inMemoryOrders[orderIndex] = {
@@ -259,7 +285,11 @@ export const merchantService = {
     }
 
     if (apiClient.isConfigured()) {
-      await apiClient.updateOrderStatus(orderId, 'REJECTED');
+      try {
+        await apiClient.updateOrderStatus(orderId, 'REJECTED');
+      } catch {
+        // ignore
+      }
     }
 
     return { success: true };

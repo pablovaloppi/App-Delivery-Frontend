@@ -56,14 +56,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [merchant, setMerchant] = useState<Merchant | null>(mockMerchants[0]);
   const [items, setItems] = useState<CartItem[]>(initialSeedItems);
   const [tip, setTip] = useState<number>(1000); // $1.000 ARS suggested
-  const [couponCode, setCouponCode] = useState<string>('PIZZA2000');
-  const [couponDiscount, setCouponDiscount] = useState<number>(2000);
-  const [couponSuccessMessage, setCouponSuccessMessage] = useState<string | null>(
-    '¡Cupón PIZZA2000 aplicado exitosamente (-$2.000 ARS)!',
-  );
+  const [couponCode, setCouponCode] = useState<string>('');
+  const [couponDiscount, setCouponDiscount] = useState<number>(0);
+  const [couponSuccessMessage, setCouponSuccessMessage] = useState<string | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'card' | 'mercadopago' | 'cash'>('card');
 
-  const deliveryFee = merchant ? merchant.deliveryFee.amount || 1450 : 1450;
+  const deliveryFee = typeof merchant?.deliveryFee?.amount === 'number' ? merchant.deliveryFee.amount : 1200;
   const freeThreshold = merchant?.freeDeliveryThreshold?.amount;
 
   const totals = calculateCartTotals(items, deliveryFee, freeThreshold, tip, couponDiscount);

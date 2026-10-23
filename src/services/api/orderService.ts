@@ -71,11 +71,12 @@ export const orderService = {
     }
 
     // Backend authoritative calculation
-    const couponDiscount = req.couponCode === 'PIZZA2000' ? 2000 : 0;
+    const couponDiscount =
+      req.couponCode === 'PIZZA2000' ? 2000 : req.couponCode === 'ENVIOGRATIS' ? deliveryFee : 0;
     const totals = calculateCartTotals(
       rawCartItems,
       deliveryFee,
-      10000,
+      undefined,
       req.tipAmount,
       couponDiscount,
     );
@@ -85,8 +86,8 @@ export const orderService = {
       id: `ord-${newOrderNumber}`,
       orderNumber: newOrderNumber,
       merchantId: req.merchantId,
-      merchantName: 'Pizzería Don Pepe',
-      customerId: 'usr-customer-1',
+      merchantName: req.merchantId === 'm_002' ? 'Burger Craft & Beer' : req.merchantId === 'm_003' ? 'Almacén Central' : 'Pizzería Don Pepe',
+      customerId: 'usr_customer_1',
       status: 'PENDING',
       deliveryType: req.deliveryType,
       items: rawCartItems.map((item) => ({

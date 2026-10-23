@@ -47,7 +47,7 @@ export const CartCheckoutView: React.FC<CartCheckoutViewProps> = ({
   const { addOrder } = useData();
   const { addNotification } = useEcosystem();
 
-  const [inputCoupon, setInputCoupon] = useState(couponCode || 'PIZZA2000');
+  const [inputCoupon, setInputCoupon] = useState(couponCode || '');
   const [couponError, setCouponError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
