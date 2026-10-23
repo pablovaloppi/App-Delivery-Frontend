@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { useData } from '../context/DataContext';
+import { useEcosystem } from '../context/EcosystemContext';
 import { formatMoney } from '../utils/formatters';
 import { orderService } from '../services/api/orderService';
 import { OrderViewModel } from '../types';
@@ -42,6 +44,8 @@ export const CartCheckoutView: React.FC<CartCheckoutViewProps> = ({
 
   const { activeAddress, setActiveAddress } = useAuth();
   const { isDark, toggleTheme } = useTheme();
+  const { addOrder } = useData();
+  const { addNotification } = useEcosystem();
 
   const [inputCoupon, setInputCoupon] = useState(couponCode || 'PIZZA2000');
   const [couponError, setCouponError] = useState<string | null>(null);
@@ -69,7 +73,7 @@ export const CartCheckoutView: React.FC<CartCheckoutViewProps> = ({
     try {
       const res = await orderService.createOrder(
         {
-          merchantId: merchant?.id || 'merch-1',
+          merchantId: merchant?.id || 'm_001',
           items: items.map((i) => ({
             productId: i.product.id,
             quantity: i.quantity,
@@ -93,6 +97,17 @@ export const CartCheckoutView: React.FC<CartCheckoutViewProps> = ({
       }
 
       setSubmitSuccess(true);
+      if (res.data) {
+        addOrder(res.data);
+        addNotification({
+          title: '¡Comanda Nueva Recibida!',
+          message: `Pedido #${res.data.orderNumber} ingresó a cocina (${res.data.items.length} ítems).`,
+          targetRole: 'merchant',
+          type: 'ORDER_UPDATE',
+          orderNumber: res.data.orderNumber,
+        });
+      }
+
       setTimeout(() => {
         clearCart();
         if (res.data) {

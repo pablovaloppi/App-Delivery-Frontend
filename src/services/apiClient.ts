@@ -469,18 +469,20 @@ export const apiClient = {
    * Fetch products for a merchant from GET /api/v1/merchants/:id/products
    */
   async getMerchantProducts(merchantId: string): Promise<Product[]> {
+    const targetMerchantId = merchantId === 'merch-1' ? 'm_001' : merchantId;
+
     if (!this.isConfigured()) {
       return mockProducts;
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/v1/merchants/${merchantId}/products`, {
-        headers: { Accept: 'application/json' },
+      const res = await fetch(`${API_BASE_URL}/api/v1/merchants/${targetMerchantId}/products`, {
+        headers: getAuthHeaders(),
         signal: AbortSignal.timeout(5000),
       });
 
       if (!res.ok) {
-        console.warn(`[API] /api/v1/merchants/${merchantId}/products returned ${res.status}`);
+        console.warn(`[API] /api/v1/merchants/${targetMerchantId}/products returned ${res.status}`);
         return mockProducts;
       }
 
@@ -491,7 +493,7 @@ export const apiClient = {
 
       const adapted: Product[] = rawProducts.map((p: any, idx: number) => ({
         id: String(p.id || `prod-${idx}`),
-        merchantId: String(p.merchantId || merchantId),
+        merchantId: String(p.merchantId || targetMerchantId),
         name: p.name || 'Plato Especial',
         description: p.description || '',
         price: {
@@ -506,8 +508,115 @@ export const apiClient = {
 
       return adapted;
     } catch (err) {
-      console.warn(`[API] Failed to fetch products for merchant ${merchantId}:`, err);
+      console.warn(`[API] Failed to fetch products for merchant ${targetMerchantId}:`, err);
       return mockProducts;
+    }
+  },
+
+  /**
+   * Create a product for a merchant POST /api/v1/merchants/:merchantId/products
+   */
+  async createProduct(
+    merchantId: string,
+    productData: {
+      name: string;
+      description: string;
+      price: number;
+      categoryId?: string;
+      available?: boolean;
+    }
+  ): Promise<Product | null> {
+    const targetMerchantId = merchantId === 'merch-1' ? 'm_001' : merchantId;
+    if (!this.isConfigured()) return null;
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/v1/merchants/${targetMerchantId}/products`, {
+        method: 'POST',
+        headers: {
+          ...getAuthHeaders(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: productData.name,
+          description: productData.description,
+          price: productData.price,
+          categoryId: productData.categoryId || 'cat_pizza',
+          available: productData.available ?? true,
+        }),
+        signal: AbortSignal.timeout(6000),
+      });
+
+      if (!res.ok) {
+        console.warn(`[API] createProduct returned ${res.status}`);
+        return null;
+      }
+
+      const json = await res.json();
+      const p = json.product || json;
+      if (!p || !p.id) return null;
+
+      return {
+        id: String(p.id),
+        merchantId: String(p.merchantId || targetMerchantId),
+        name: p.name,
+        description: p.description || '',
+        price: { amount: typeof p.price === 'number' ? p.price : p.price?.amount || 10000, currency: 'ARS' },
+        imageUrl: p.imageUrl || pickProductImage(p.name),
+        category: p.categoryId === 'cat_pizza' ? 'Pizzas' : 'Especiales',
+        isAvailable: p.available !== false,
+      };
+    } catch (err) {
+      console.warn('[API] createProduct failed:', err);
+      return null;
+    }
+  },
+
+  /**
+   * Update merchant PATCH /api/v1/merchants/:merchantId
+   */
+  async updateMerchant(merchantId: string, updates: Record<string, any>): Promise<boolean> {
+    const targetMerchantId = merchantId === 'merch-1' ? 'm_001' : merchantId;
+    if (!this.isConfigured()) return false;
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/v1/merchants/${targetMerchantId}`, {
+        method: 'PATCH',
+        headers: {
+          ...getAuthHeaders(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updates),
+        signal: AbortSignal.timeout(5000),
+      });
+
+      return res.ok;
+    } catch (err) {
+      console.warn('[API] updateMerchant failed:', err);
+      return false;
+    }
+  },
+
+  /**
+   * Update order status POST /api/v1/orders/:orderId/status
+   */
+  async updateOrderStatus(orderId: string, status: string): Promise<boolean> {
+    if (!this.isConfigured()) return false;
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/v1/orders/${orderId}/status`, {
+        method: 'POST',
+        headers: {
+          ...getAuthHeaders(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status }),
+        signal: AbortSignal.timeout(5000),
+      });
+
+      return res.ok;
+    } catch (err) {
+      console.warn('[API] updateOrderStatus failed:', err);
+      return false;
     }
   },
 
@@ -600,8 +709,8 @@ export const apiClient = {
       const res = await fetch(`${API_BASE_URL}/api/v1/orders`, {
         method: 'POST',
         headers: {
+          ...getAuthHeaders(),
           'Content-Type': 'application/json',
-          Accept: 'application/json',
         },
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(6000),

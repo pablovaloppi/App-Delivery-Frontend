@@ -201,7 +201,9 @@ export const merchantService = {
       try {
         const live = await apiClient.getOrders();
         if (live && live.length > 0) {
-          return live;
+          const liveIds = new Set(live.map((o) => o.id));
+          const unsynced = inMemoryOrders.filter((o) => !liveIds.has(o.id));
+          return [...unsynced, ...live];
         }
       } catch {
         // fallback
@@ -210,27 +212,36 @@ export const merchantService = {
     return [...inMemoryOrders];
   },
 
+  async addOrder(newOrder: OrderViewModel): Promise<void> {
+    const exists = inMemoryOrders.some((o) => o.id === newOrder.id || o.orderNumber === newOrder.orderNumber);
+    if (!exists) {
+      inMemoryOrders = [newOrder, ...inMemoryOrders];
+    }
+  },
+
   async updateOrderStatus(
     orderId: string,
     targetStatus: OrderStatus,
   ): Promise<{ success: boolean; error?: string; order?: OrderViewModel }> {
     const orderIndex = inMemoryOrders.findIndex((o) => o.id === orderId);
-    if (orderIndex === -1) {
-      return { success: false, error: 'Pedido no encontrado' };
-    }
+    if (orderIndex !== -1) {
+      const currentStatus = inMemoryOrders[orderIndex].status;
+      if (!isValidMerchantTransition(currentStatus, targetStatus)) {
+        return {
+          success: false,
+          error: `Transición de estado no autorizada para el comercio (${currentStatus} -> ${targetStatus})`,
+        };
+      }
 
-    const currentStatus = inMemoryOrders[orderIndex].status;
-    if (!isValidMerchantTransition(currentStatus, targetStatus)) {
-      return {
-        success: false,
-        error: `Transición de estado no autorizada para el comercio (${currentStatus} -> ${targetStatus})`,
+      inMemoryOrders[orderIndex] = {
+        ...inMemoryOrders[orderIndex],
+        status: targetStatus,
       };
     }
 
-    inMemoryOrders[orderIndex] = {
-      ...inMemoryOrders[orderIndex],
-      status: targetStatus,
-    };
+    if (apiClient.isConfigured()) {
+      await apiClient.updateOrderStatus(orderId, targetStatus);
+    }
 
     return { success: true, order: inMemoryOrders[orderIndex] };
   },
@@ -240,14 +251,16 @@ export const merchantService = {
     reason: string,
   ): Promise<{ success: boolean; error?: string }> {
     const orderIndex = inMemoryOrders.findIndex((o) => o.id === orderId);
-    if (orderIndex === -1) {
-      return { success: false, error: 'Pedido no encontrado' };
+    if (orderIndex !== -1) {
+      inMemoryOrders[orderIndex] = {
+        ...inMemoryOrders[orderIndex],
+        status: 'REJECTED',
+      };
     }
 
-    inMemoryOrders[orderIndex] = {
-      ...inMemoryOrders[orderIndex],
-      status: 'REJECTED',
-    };
+    if (apiClient.isConfigured()) {
+      await apiClient.updateOrderStatus(orderId, 'REJECTED');
+    }
 
     return { success: true };
   },
@@ -257,6 +270,7 @@ export const merchantService = {
       try {
         const prods = await apiClient.getMerchantProducts('m_001');
         if (prods && prods.length > 0) {
+          inMemoryProducts = prods;
           return prods;
         }
       } catch {
@@ -291,10 +305,22 @@ export const merchantService = {
   },
 
   async addProduct(newProduct: Omit<Product, 'id'>): Promise<Product> {
-    const product: Product = {
+    let createdBackendProduct: Product | null = null;
+
+    if (apiClient.isConfigured()) {
+      createdBackendProduct = await apiClient.createProduct('m_001', {
+        name: newProduct.name,
+        description: newProduct.description,
+        price: newProduct.price.amount,
+        available: newProduct.isAvailable,
+      });
+    }
+
+    const product: Product = createdBackendProduct || {
       ...newProduct,
-      id: `prod-${Date.now()}`,
+      id: `p_${Date.now()}`,
     };
+
     inMemoryProducts = [product, ...inMemoryProducts];
     return product;
   },
@@ -308,6 +334,11 @@ export const merchantService = {
       ...inMemorySettings,
       ...updates,
     };
+
+    if (apiClient.isConfigured() && typeof updates.isOpen === 'boolean') {
+      await apiClient.updateMerchant('m_001', { isOpen: updates.isOpen });
+    }
+
     return { ...inMemorySettings };
   },
 };

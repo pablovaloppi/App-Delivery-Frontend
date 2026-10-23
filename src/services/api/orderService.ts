@@ -1,6 +1,7 @@
 import { CartItem, MoneyAmount, OrderStatus, OrderViewModel } from '../../types';
 import { calculateCartTotals } from '../../utils/cartCalculations';
 import { apiClient } from '../apiClient';
+import { merchantService } from './merchantService';
 
 export interface CreateOrderRequest {
   merchantId: string;
@@ -84,7 +85,7 @@ export const orderService = {
       id: `ord-${newOrderNumber}`,
       orderNumber: newOrderNumber,
       merchantId: req.merchantId,
-      merchantName: rawCartItems[0]?.product.name ? 'Comercio Local' : 'Pizzería Napolitana Gourmet',
+      merchantName: 'Pizzería Don Pepe',
       customerId: 'usr-customer-1',
       status: 'PENDING',
       deliveryType: req.deliveryType,
@@ -120,6 +121,8 @@ export const orderService = {
       estimatedDeliveryTime: '30-40 min',
     };
 
+    let finalOrder = newOrder;
+
     // If live backend is configured, attempt real POST to /api/v1/orders
     if (apiClient.isConfigured()) {
       try {
@@ -143,14 +146,10 @@ export const orderService = {
 
         const result = await apiClient.createOrder(payload);
         if (result.success && result.order) {
-          return {
-            data: {
-              ...newOrder,
-              id: result.order.id || newOrder.id,
-              orderNumber: result.order.orderNumber || newOrder.orderNumber,
-            },
-            meta: { requestId: `req-${Date.now()}`, serverTime: new Date().toISOString() },
-            error: null,
+          finalOrder = {
+            ...newOrder,
+            id: result.order.id || newOrder.id,
+            orderNumber: result.order.orderNumber || newOrder.orderNumber,
           };
         }
       } catch (e) {
@@ -158,8 +157,11 @@ export const orderService = {
       }
     }
 
+    // Register in merchant's in-memory store so it's immediately available to the merchant view
+    await merchantService.addOrder(finalOrder);
+
     return {
-      data: newOrder,
+      data: finalOrder,
       meta: {
         requestId: `req-${Date.now()}`,
         serverTime: new Date().toISOString(),

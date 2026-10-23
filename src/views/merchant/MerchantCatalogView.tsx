@@ -52,9 +52,9 @@ export const MerchantCatalogView: React.FC = () => {
     if (!newName || isNaN(amount) || amount <= 0) return;
 
     await merchantService.addProduct({
-      merchantId: 'merch-1',
+      merchantId: 'm_001',
       name: newName,
-      description: newDesc || 'Producto recién agregado al menú.',
+      description: newDesc || 'Plato añadido desde la consola de cocina.',
       price: { amount, currency: 'ARS' },
       category: newCategory,
       isAvailable: true,

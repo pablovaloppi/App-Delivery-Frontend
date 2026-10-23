@@ -7,6 +7,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { Merchant, Product, OrderViewModel } from '../types';
 import { apiClient, BackendHealth } from '../services/apiClient';
 import { mockMerchants, mockProducts } from '../data/mockData';
+import { merchantService } from '../services/api/merchantService';
 
 interface DataContextType {
   merchants: Merchant[];
@@ -16,6 +17,7 @@ interface DataContextType {
   fetchProductsByMerchantId: (merchantId: string) => Promise<Product[]>;
   orders: OrderViewModel[];
   refreshOrders: () => Promise<void>;
+  addOrder: (newOrder: OrderViewModel) => void;
   isLiveBackend: boolean;
 }
 
@@ -43,8 +45,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setMerchants(fetchedMerchants);
       }
 
-      // 3. Fetch real orders
-      const fetchedOrders = await apiClient.getOrders();
+      // 3. Fetch real orders from merchant / backend service
+      const fetchedOrders = await merchantService.getOrders();
       if (fetchedOrders && fetchedOrders.length > 0) {
         setOrders(fetchedOrders);
       }
@@ -67,10 +69,18 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const refreshOrders = async () => {
-    const list = await apiClient.getOrders();
+    const list = await merchantService.getOrders();
     if (list && list.length > 0) {
       setOrders(list);
     }
+  };
+
+  const addOrder = (newOrder: OrderViewModel) => {
+    setOrders((prev) => {
+      const exists = prev.some((o) => o.id === newOrder.id || o.orderNumber === newOrder.orderNumber);
+      return exists ? prev : [newOrder, ...prev];
+    });
+    merchantService.addOrder(newOrder);
   };
 
   const fetchProductsByMerchantId = async (merchantId: string): Promise<Product[]> => {
@@ -92,6 +102,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         fetchProductsByMerchantId,
         orders,
         refreshOrders,
+        addOrder,
         isLiveBackend: backendHealth.isOnline,
       }}
     >
